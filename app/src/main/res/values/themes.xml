@@ -6,4 +6,7 @@
     </style>
 
     <style name="Theme.CarRental" parent="Base.Theme.CarRental" />
+    <style name="navigatiton_textSize">
+        <item name="android:textSize">22sp</item>
+    </style>
 </resources>
