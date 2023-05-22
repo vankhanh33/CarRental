@@ -1,0 +1,5 @@
+Car Rental là một ứng dụng thuê xe máy trên điện thoại di động, giúp cho người dùng dễ dàng tìm kiếm và đặt xe máy từ các đối tác cho thuê xe uy tín. Với Car Rental, bạn có thể thuê xe máy một cách nhanh chóng, tiện lợi và an toàn.
+Sử dụng Car Rental, bạn có thể dễ dàng tìm kiếm các đối tác cho thuê xe gần vị trí của mình thông qua GPS và có thể xem thông tin chi tiết về loại xe, giá cả và điều kiện cho thuê. Ngoài ra, bạn cũng có thể đặt xe trước để chắc chắn sẽ có xe khi đến địa điểm thuê.
+Nếu bạn muốn khám phá thành phố một cách tự do và độc đáo, Car Rental sẽ là sự lựa chọn hoàn hảo cho bạn. Bạn có thể thỏa sức khám phá những con đường nhỏ, những góc phố tuyệt đẹp và hấp dẫn trong thành phố, mà không phải bận tâm về việc tìm kiếm phương tiện đi lại.
+Với một giao diện thân thiện và dễ sử dụng, Car Rental là ứng dụng miễn phí, hỗ trợ cho người dùng thuê xe máy một cách nhanh chóng và tiện lợi nhất. Tải ứng dụng Car Rental ngay để khám phá thế giới một cách mới mẻ và đầy thú vị!
+# CarRental
