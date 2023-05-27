@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">CarRental</string>
+    <dimen name="item_height_car">250dp</dimen>
 </resources>

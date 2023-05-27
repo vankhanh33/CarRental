@@ -11,11 +11,14 @@
     <ScrollView
         android:id="@+id/layout_main"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+   >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+
             android:orientation="vertical">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -60,7 +63,7 @@
                         android:layout_gravity="center"
                         android:padding="5dp"
 
-                        android:src="@drawable/favourite" />
+                        android:src="@drawable/not_favorite" />
                 </androidx.cardview.widget.CardView>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -68,20 +71,26 @@
           <LinearLayout
               android:layout_width="match_parent"
               android:layout_margin="20dp"
+              android:gravity="center"
               android:layout_height="300dp">
-              <androidx.viewpager.widget.ViewPager
-                  android:layout_width="match_parent"
-                  android:layout_height="300dp"
-                  android:background="@drawable/img_car"
-                  android:padding="50dp"/>
+              <ImageView
+                  android:id="@+id/img_detail_car"
+                  android:layout_width="300dp"
+                  android:layout_height="210dp"
+
+                  android:src="@drawable/img_car"
+               />
           </LinearLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="500dp"
+                android:layout_height="match_parent"
                 android:background="@drawable/box_details"
                 android:elevation="4dp"
-                android:padding="20dp">
+                android:paddingTop="20dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="60dp">
 
                 <TextView
                     android:id="@+id/rectangle_4"
@@ -125,7 +134,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView_rentcar">
 
                     <LinearLayout
-                        android:layout_width="95dp"
+                        android:layout_width="100dp"
                         android:layout_height="55dp"
                         android:background="@drawable/background_textview_rent"
                         android:orientation="vertical"
@@ -155,7 +164,7 @@
 
                     <LinearLayout
                         android:id="@+id/linearLayout"
-                        android:layout_width="95dp"
+                        android:layout_width="100dp"
                         android:layout_height="55dp"
                         android:background="@drawable/background_properties"
 
@@ -178,7 +187,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Mã lực số liệu"
+                            android:text="Hours power"
                             android:textAlignment="center"
                             android:textColor="@color/gray"
                             android:textSize="14sp"
@@ -186,7 +195,7 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="95dp"
+                        android:layout_width="100dp"
                         android:layout_height="55dp"
                         android:layout_marginLeft="10dp"
                         android:background="@drawable/background_properties"
@@ -209,7 +218,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Số dặm"
+                            android:text="Mileage"
                             android:textAlignment="center"
                             android:textColor="@color/gray"
                             android:textSize="14sp"
@@ -229,43 +238,52 @@
                     app:layout_constraintTop_toBottomOf="@+id/layout_properties" />
 
                 <TextView
-                    android:id="@+id/textView_descibe"
+                    android:id="@+id/textView_description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="top"
+
                     android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
 eiusmod tempor incididunt ut labore et dolore magna aliqua.
 Quis ipsum suspendisse ultrices gravida. Risus commodo
 viverra maecenas accumsan lacus vel facilisis. "
                     android:textColor="#000000"
                     android:textSize="15sp"
+
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView_textDescribe" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="210dp"
+              android:padding="5dp">
+              <fragment
+                  android:id="@+id/map"
+                  android:name="com.google.android.gms.maps.SupportMapFragment"
+                  android:layout_width="100dp"
+                  android:layout_height="match_parent"
+                  android:clickable="true" />
+              <com.google.android.gms.maps.MapView
+                  android:id="@+id/map_view"
+                  android:layout_width="200dp"
+                  android:layout_height="200dp" />
+          </LinearLayout>
 
         </LinearLayout>
     </ScrollView>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
+    <TextView
+        android:id="@+id/button_buy"
+        android:layout_width="146dp"
+        android:layout_height="40dp"
+        android:background="@drawable/background_textview_rent"
+        android:backgroundTint="@color/blue"
+        android:elevation="4dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="20dp"
-        android:gravity="center">
-
-        <TextView
-            android:id="@+id/button_buy"
-            android:layout_width="146dp"
-            android:layout_height="40dp"
-            android:background="@drawable/background_textview_rent"
-            android:backgroundTint="@color/blue"
-            android:elevation="4dp"
-            android:gravity="center"
-            android:text="Đồng ý thuê"
-            android:textColor="#ffffff"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-    </LinearLayout>
+        android:gravity="center"
+        android:layout_marginBottom="10dp"
+        android:layout_centerInParent="true"
+        android:text="Đồng ý thuê"
+        android:textColor="#ffffff"
+        android:textSize="16sp"
+        android:textStyle="bold" />
 </RelativeLayout>
