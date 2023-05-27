@@ -3,31 +3,33 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_home"
+           android:id="@+id/nav_home"
             android:icon="@drawable/home"
-            android:title="Trang chủ"
+            android:title="Home"
+
             app:actionViewClass="android.widget.TextView"
             app:showAsAction="always"
+
             />
         <item
-            android:id="@+id/nav_smart"
+            android:id="@+id/nav_shop"
             android:icon="@drawable/car"
-            android:title="Cửa hàng"
+            android:title="Shop"
             app:actionViewClass="android.widget.TextView"
             app:showAsAction="always"
             />
 
         <item
-            android:id="@+id/nav_lap"
-            android:icon="@drawable/favourite"
-            android:title="Yêu thích"
+            android:id="@+id/nav_favourite"
+            android:icon="@drawable/not_favorite"
+            android:title="Favourite"
             app:actionViewClass="android.widget.TextView"
             app:showAsAction="always"
             />
         <item
-            android:id="@+id/nav_account"
+            android:id="@+id/nav_setting"
             android:icon="@drawable/setting"
-            android:title="Cài đặt"
+            android:title="Setting"
             app:actionViewClass="android.widget.TextView"
             app:showAsAction="always"/>
     </group>
