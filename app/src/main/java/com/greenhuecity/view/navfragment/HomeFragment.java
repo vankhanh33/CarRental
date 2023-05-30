@@ -14,7 +14,6 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import com.greenhuecity.R;
 import com.greenhuecity.view.adapter.ViewPagerHomeAdapter;
-import com.greenhuecity.view.adapter.ViewPagerShopAdapter;
 
 public class HomeFragment extends Fragment {
     TabLayout tabLayout;

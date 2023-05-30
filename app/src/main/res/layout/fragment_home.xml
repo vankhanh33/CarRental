@@ -5,12 +5,60 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:scrollbars="none"
-    android:layout_marginTop="40dp">
+  >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:orientation="horizontal"
+            android:paddingStart="10dp">
+
+            <TextView
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/border_search"
+                android:backgroundTint="#7ADDDDDD"
+                android:drawableStart="@drawable/location"
+                android:drawableEnd="@drawable/my_location"
+                android:drawablePadding="10dp"
+                android:text="Huế"
+                android:gravity="center_vertical"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:padding="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:cardCornerRadius="30dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginEnd="10dp">
+                <ImageView
+                    android:id="@+id/img_logo"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:scaleType="fitXY"
+                    android:padding="5dp"
+                    android:src="@drawable/em_quynh"
+                    android:layout_gravity="center"
+                    />
+            </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
         <TextView
             android:id="@+id/b_n_ang_t_m"
             android:layout_width="250dp"
@@ -82,22 +130,21 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-           <com.google.android.material.tabs.TabLayout
-               android:layout_marginTop="30dp"
-               android:id="@+id/tablayout_brand"
-               android:layout_width="match_parent"
-               android:layout_marginStart="10dp"
-               android:layout_marginEnd="10dp"
-               android:layout_height="50dp"
-               android:layout_gravity="center"
-               app:tabBackground="@drawable/select_tab"
-               app:tabGravity="fill"
-               app:tabMinWidth="130dp"
-               app:tabIndicatorHeight="0dp"
-               app:tabMode="scrollable"
-               app:tabSelectedTextColor="#ffffff"
-               app:tabTextAppearance="@style/tab_text"
-               />
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tablayout_brand"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="10dp"
+            app:tabBackground="@drawable/select_tab"
+            app:tabGravity="fill"
+            app:tabIndicatorHeight="0dp"
+            app:tabMinWidth="130dp"
+            app:tabMode="scrollable"
+            app:tabSelectedTextColor="#ffffff"
+            app:tabTextAppearance="@style/tab_text" />
 
 
         <androidx.viewpager2.widget.ViewPager2

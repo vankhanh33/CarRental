@@ -30,7 +30,7 @@ public class FavoriteCarDatabaseHelper extends SQLiteOpenHelper {
 
     // SQL statement to create the cars table
     private static final String CREATE_TABLE_CARS = "CREATE TABLE " + TABLE_CARS + "(" +
-            COLUMN_CAR_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            COLUMN_CAR_ID + " INTEGER PRIMARY KEY , " +
             COLUMN_CAR_IMG + " TEXT, " +
             COLUMN_CAR_NAME + " TEXT, " +
             COLUMN_RENTAL_PRICE + " INTEGER, " +
@@ -66,6 +66,7 @@ public class FavoriteCarDatabaseHelper extends SQLiteOpenHelper {
     public long addCar(Car car) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
+        values.put(COLUMN_CAR_ID, car.getCar_id());
         values.put(COLUMN_CAR_IMG, car.getCar_img());
         values.put(COLUMN_CAR_NAME, car.getCar_name());
         values.put(COLUMN_RENTAL_PRICE, car.getRental_price());

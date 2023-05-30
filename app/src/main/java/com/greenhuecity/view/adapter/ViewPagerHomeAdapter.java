@@ -5,8 +5,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.greenhuecity.view.childnavfragment.HomeChildFragment;
-import com.greenhuecity.view.childnavfragment.ShopChildFragment;
+import com.greenhuecity.view.childnavfragment.CarFragment;
 
 public class ViewPagerHomeAdapter extends FragmentStateAdapter {
     public ViewPagerHomeAdapter(@NonNull FragmentActivity fragmentActivity) {
@@ -17,11 +16,11 @@ public class ViewPagerHomeAdapter extends FragmentStateAdapter {
     @Override
     public Fragment createFragment(int position) {
         switch (position){
-            case 0: return new HomeChildFragment("");
-            case 1: return  new HomeChildFragment("3");
-            case 2: return  new HomeChildFragment("1");
-            case 3: return new HomeChildFragment("2");
-            default: return new HomeChildFragment("");
+            case 0: return new CarFragment("");
+            case 1: return  new CarFragment("3");
+            case 2: return  new CarFragment("1");
+            case 3: return new CarFragment("2");
+            default: return new CarFragment("");
         }
 
     }
