@@ -1,21 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="40dp"
+
     android:layout_marginBottom="70dp"
-    android:scrollbars="none"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:scrollbars="none">
 
     <LinearLayout
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/header"
+        android:id="@+id/layout_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:orientation="vertical">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:orientation="horizontal"
+            android:paddingStart="10dp">
 
+            <TextView
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/border_search"
+                android:backgroundTint="#7ADDDDDD"
+                android:drawableStart="@drawable/location"
+                android:drawableEnd="@drawable/my_location"
+                android:drawablePadding="10dp"
+                android:text="Huế"
+                android:gravity="center_vertical"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:padding="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:cardCornerRadius="30dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginEnd="10dp">
+                <ImageView
+                    android:id="@+id/img_logo"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:scaleType="fitXY"
+                    android:padding="5dp"
+                    android:src="@drawable/user2"
+                    android:layout_gravity="center"
+                    />
+            </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
         <TextView
             android:id="@+id/b_n_ang_t_m"
             android:layout_width="190dp"
@@ -24,16 +71,16 @@
             android:layout_alignParentTop="true"
             android:layout_marginLeft="18dp"
             android:lineHeight="28sp"
-            android:textStyle="bold"
             android:text="Danh sách yêu thích của bạn"
             android:textColor="#000000"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="15dp">
 
             <com.google.android.material.textfield.TextInputLayout
@@ -70,40 +117,33 @@
                 android:layout_height="35dp"
                 android:layout_marginEnd="10dp"
                 android:background="@drawable/icon_search"
+                app:layout_constraintBottom_toBottomOf="@id/textInputLayout"
                 app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
-                app:layout_constraintTop_toTopOf="@id/textInputLayout"
-                app:layout_constraintBottom_toBottomOf="@id/textInputLayout"/>
+                app:layout_constraintTop_toTopOf="@id/textInputLayout" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <com.google.android.material.tabs.TabLayout
-            android:layout_marginTop="30dp"
-            android:id="@+id/tablayout_brand"
-            android:layout_width="match_parent"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            app:tabBackground="@drawable/select_tab"
-            app:tabGravity="fill"
-            app:tabMinWidth="100dp"
-            app:tabIndicatorHeight="0dp"
-            app:tabMode="scrollable"
-            app:tabSelectedTextColor="#ffffff"
-            app:tabTextAppearance="@style/tab_text"
-            />
 
 
 
     </LinearLayout>
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/viewpager2_car"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView_car"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_below="@id/layout_header"
+
         android:layout_margin="10dp"
-        android:layout_below="@id/header"/>
-
-
-
+        android:paddingTop="20dp"/>
+    <TextView
+        android:id="@+id/textView_favoriteNull"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/layout_header"
+        android:text="Trống"
+        android:textStyle="bold"
+        android:textColor="#333"
+        android:textSize="25sp"
+        android:gravity="center"
+        android:visibility="gone"
+        />
 </RelativeLayout>

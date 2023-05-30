@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <group android:checkableBehavior="single">
         <item
-           android:id="@+id/nav_home"
+            android:id="@+id/nav_home"
             android:icon="@drawable/home"
             android:title="Home"
 
@@ -12,20 +12,21 @@
 
             />
         <item
-            android:id="@+id/nav_shop"
-            android:icon="@drawable/car"
-            android:title="Shop"
-            app:actionViewClass="android.widget.TextView"
-            app:showAsAction="always"
-            />
-
-        <item
             android:id="@+id/nav_favourite"
-            android:icon="@drawable/not_favorite"
+            android:icon="@drawable/heart"
             android:title="Favourite"
             app:actionViewClass="android.widget.TextView"
             app:showAsAction="always"
             />
+        <item
+            android:id="@+id/nav_notify"
+            android:icon="@drawable/notifi"
+            android:title="Notify"
+            app:actionViewClass="android.widget.TextView"
+            app:showAsAction="always"
+            />
+
+
         <item
             android:id="@+id/nav_setting"
             android:icon="@drawable/setting"

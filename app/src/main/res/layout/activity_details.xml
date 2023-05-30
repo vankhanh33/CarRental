@@ -12,8 +12,7 @@
         android:id="@+id/layout_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="none"
-   >
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -57,50 +56,49 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <ImageView
-                        android:id="@+id/img_logo"
+                        android:id="@+id/img_heart"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:layout_gravity="center"
                         android:padding="5dp"
 
-                        android:src="@drawable/not_favorite" />
+                        android:src="@drawable/heart" />
                 </androidx.cardview.widget.CardView>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-          <LinearLayout
-              android:layout_width="match_parent"
-              android:layout_margin="20dp"
-              android:gravity="center"
-              android:layout_height="300dp">
-              <ImageView
-                  android:id="@+id/img_detail_car"
-                  android:layout_width="300dp"
-                  android:layout_height="210dp"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_margin="20dp"
+                android:gravity="center">
 
-                  android:src="@drawable/img_car"
-               />
-          </LinearLayout>
+                <ImageView
+                    android:id="@+id/img_detail_car"
+                    android:layout_width="300dp"
+                    android:layout_height="210dp"
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:src="@drawable/img_car" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/box_details"
                 android:elevation="4dp"
-                android:paddingTop="20dp"
+                android:orientation="vertical"
                 android:paddingLeft="20dp"
+                android:paddingTop="20dp"
                 android:paddingRight="20dp"
-                android:paddingBottom="60dp">
+                android:paddingBottom="90dp">
 
                 <TextView
                     android:id="@+id/rectangle_4"
                     android:layout_width="58dp"
                     android:layout_height="8dp"
+                    android:layout_gravity="center_horizontal"
                     android:background="@drawable/background_textview_rent"
-                    android:backgroundTint="@color/gray"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:backgroundTint="@color/gray" />
 
                 <TextView
                     android:id="@+id/textView_nameCar"
@@ -110,9 +108,7 @@
                     android:text="H2R"
                     android:textColor="#000000"
                     android:textSize="24sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/rectangle_4" />
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/textView_rentcar"
@@ -121,17 +117,54 @@
                     android:gravity="top"
                     android:text="Thuê xe máy"
                     android:textColor="#c1c1c1"
-                    android:textSize="15sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_nameCar" />
+                    android:textSize="15sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@android:drawable/star_big_off"
+                        android:drawablePadding="5dp"
+                        android:drawableTint="#FFC107"
+                        android:gravity="center_vertical"
+                        android:text="4.8"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="10dp"
+                        android:text="[100+ Reviews]"
+                        android:textColor="#c1c1c1"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/gray" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Car Specs"
+                    android:textColor="#000000"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/layout_properties"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView_rentcar">
+                    android:layout_margin="10dp">
 
                     <LinearLayout
                         android:layout_width="100dp"
@@ -225,14 +258,15 @@
                             android:textStyle="bold" />
                     </LinearLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
+
                 <TextView
                     android:id="@+id/textView_textDescribe"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:text="Mô tả"
-                    android:textColor="#000000"
-                    android:textSize="24sp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="22sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/layout_properties" />
@@ -252,38 +286,51 @@ viverra maecenas accumsan lacus vel facilisis. "
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView_textDescribe" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
-          <LinearLayout
-              android:layout_width="match_parent"
-              android:layout_height="210dp"
-              android:padding="5dp">
-              <fragment
-                  android:id="@+id/map"
-                  android:name="com.google.android.gms.maps.SupportMapFragment"
-                  android:layout_width="100dp"
-                  android:layout_height="match_parent"
-                  android:clickable="true" />
-              <com.google.android.gms.maps.MapView
-                  android:id="@+id/map_view"
-                  android:layout_width="200dp"
-                  android:layout_height="200dp" />
-          </LinearLayout>
+            </LinearLayout>
+
 
         </LinearLayout>
     </ScrollView>
-    <TextView
+
+    <LinearLayout
         android:id="@+id/button_buy"
-        android:layout_width="146dp"
-        android:layout_height="40dp"
-        android:background="@drawable/background_textview_rent"
-        android:backgroundTint="@color/blue"
-        android:elevation="4dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
         android:layout_alignParentBottom="true"
-        android:gravity="center"
-        android:layout_marginBottom="10dp"
-        android:layout_centerInParent="true"
-        android:text="Đồng ý thuê"
-        android:textColor="#ffffff"
-        android:textSize="16sp"
-        android:textStyle="bold" />
+        android:layout_margin="20dp"
+        android:background="@drawable/background_textview_rent"
+        android:gravity="center">
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:elevation="4dp"
+            android:gravity="center_vertical"
+            android:text="Booking "
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+
+            android:alpha="0.4"
+            android:background="@color/gray" />
+
+        <TextView
+            android:id="@+id/textView_priceDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:elevation="4dp"
+            android:gravity="center_vertical"
+            android:text="299.000 đ/day "
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
 </RelativeLayout>

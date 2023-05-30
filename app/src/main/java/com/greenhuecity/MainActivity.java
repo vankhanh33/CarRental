@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -16,7 +17,6 @@ public class MainActivity extends AppCompatActivity {
     ViewPager2 viewPager2;
     BottomNavigationView bottomNavigationView;
 
-    public  int item_id = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,15 +29,14 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
                int id = item.getItemId();
                 if (id == R.id.nav_home) {
-                    item_id = 0;
+
                     viewPager2.setCurrentItem(0);
-                } else if (id == R.id.nav_shop) {
-                    item_id = 1;
-                    viewPager2.setCurrentItem(1);
                 } else if (id == R.id.nav_favourite) {
+                    viewPager2.setCurrentItem(1);
+                    return true;
+                } else if (id == R.id.nav_notify) {
 
                     viewPager2.setCurrentItem(2);
                 } else if (id == R.id.nav_setting) {
