@@ -92,101 +92,49 @@
 
      </androidx.constraintlayout.widget.ConstraintLayout>
 
+     <TextView
+         android:id="@+id/text"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:lineHeight="30sp"
+         android:text="Chọn ngày thuê xe..."
+         android:padding="10dp"
+         android:textColor="@color/black"
+         android:layout_marginLeft="10dp"
+         android:textSize="22sp"
+         android:textStyle="bold"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
+
      <CalendarView
          android:id="@+id/calendarView"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
-         android:layout_marginTop="20dp"
+         android:background="@drawable/background_properties"
+         android:focusedMonthDateColor="#ff0"
          app:layout_constraintEnd_toEndOf="parent"
          app:layout_constraintStart_toStartOf="parent"
-         app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
-         android:background="@drawable/background_properties"/>
-
-     <LinearLayout
-         android:id="@+id/linearLayout"
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         android:gravity="center_horizontal"
-         app:layout_constraintEnd_toEndOf="parent"
-         app:layout_constraintStart_toStartOf="parent"
-         app:layout_constraintTop_toBottomOf="@+id/calendarView">
-
-         <LinearLayout
-             android:layout_width="160dp"
-             android:layout_height="70dp"
-             android:layout_marginTop="20dp"
-             android:background="@drawable/background_properties"
-             android:orientation="vertical"
-             android:padding="5dp">
-
-             <TextView
-                 android:layout_width="match_parent"
-                 android:layout_height="wrap_content"
-                 android:paddingLeft="10dp"
-                 android:text="Start"
-                 android:textColor="@color/gray"
-                 android:textSize="16sp" />
-
-             <TextView
-                 android:id="@+id/textView_ps"
-                 android:layout_width="match_parent"
-                 android:layout_height="wrap_content"
-                 android:layout_marginTop="5dp"
-                 android:paddingLeft="10dp"
-                 android:text="22 Feb 2022"
-                 android:textAlignment="textStart"
-                 android:textColor="#000000"
-                 android:textSize="16sp"
-                 android:textStyle="bold" />
-
-         </LinearLayout>
-
-         <LinearLayout
-
-             android:layout_width="160dp"
-             android:layout_height="70dp"
-             android:layout_marginLeft="20dp"
-             android:layout_marginTop="20dp"
-             android:background="@drawable/background_properties"
-             android:orientation="vertical"
-             android:padding="5dp">
-
-             <TextView
-                 android:layout_width="match_parent"
-                 android:layout_height="wrap_content"
-                 android:paddingLeft="10dp"
-                 android:text="End"
-                 android:textColor="@color/gray"
-                 android:textSize="16sp" />
-
-             <TextView
-
-                 android:layout_width="match_parent"
-                 android:layout_height="wrap_content"
-                 android:layout_marginTop="5dp"
-                 android:paddingLeft="10dp"
-                 android:text="28 Feb 2022"
-                 android:textAlignment="textStart"
-                 android:textColor="#000000"
-                 android:textSize="16sp"
-                 android:textStyle="bold" />
+         app:layout_constraintTop_toBottomOf="@+id/text" />
 
 
-         </LinearLayout>
-     </LinearLayout>
+
+
+
  </androidx.constraintlayout.widget.ConstraintLayout>
+
     <TextView
         android:id="@+id/button_buy"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true"
 
         android:textSize="22sp"
-        android:text="Booking"
+        android:text="OK"
         android:textColor="#ffffff"
         android:textStyle="bold"
         android:background="@drawable/background_textview_rent"
         android:gravity="center">
 
     </TextView>
+
 </RelativeLayout>

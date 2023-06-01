@@ -14,7 +14,6 @@ import java.util.List;
 public class FavoriteCarDatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "favorite_cars.db";
     private static final int DATABASE_VERSION = 1;
-
     private static final String TABLE_CARS = "cars";
     private static final String COLUMN_CAR_ID = "_id";
     private static final String COLUMN_CAR_IMG = "car_img";
@@ -24,6 +23,9 @@ public class FavoriteCarDatabaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_HORSEPOWER = "horsepower";
     private static final String COLUMN_MILEAGE = "mileage";
     private static final String COLUMN_CAR_DESCRIPTION = "car_description";
+    private static final String COLUMN_LATITUDE = "latitude";
+    private static final String COLUMN_LONGITUDE = "longitude";
+    private static final String COLUMN_LESSOR_ID = "lessor_id";
     private static final String COLUMN_CATEGORY_ID = "category_id";
     private static final String COLUMN_CATEGORY_IMG = "category_img";
     private static final String COLUMN_CATEGORY_NAME = "category_name";
@@ -38,6 +40,9 @@ public class FavoriteCarDatabaseHelper extends SQLiteOpenHelper {
             COLUMN_HORSEPOWER + " TEXT, " +
             COLUMN_MILEAGE + " TEXT, " +
             COLUMN_CAR_DESCRIPTION + " TEXT, " +
+            COLUMN_LATITUDE + " DECIMAL(10, 6), " +
+            COLUMN_LONGITUDE + " DECIMAL(10, 6), " +
+            COLUMN_LESSOR_ID + " INTEGER, " +
             COLUMN_CATEGORY_ID + " INTEGER, " +
             COLUMN_CATEGORY_IMG + " TEXT, " +
             COLUMN_CATEGORY_NAME + " TEXT);";
@@ -74,6 +79,9 @@ public class FavoriteCarDatabaseHelper extends SQLiteOpenHelper {
         values.put(COLUMN_HORSEPOWER, car.getHorsepower());
         values.put(COLUMN_MILEAGE, car.getMileage());
         values.put(COLUMN_CAR_DESCRIPTION, car.getCar_description());
+        values.put(COLUMN_LATITUDE, car.getLatitude());
+        values.put(COLUMN_LONGITUDE, car.getLongitude());
+        values.put(COLUMN_LESSOR_ID, car.getLessor_id());
         values.put(COLUMN_CATEGORY_ID, car.getCategory_id());
         values.put(COLUMN_CATEGORY_IMG, car.getCategory_img());
         values.put(COLUMN_CATEGORY_NAME, car.getCategory_name());
@@ -115,11 +123,14 @@ public class FavoriteCarDatabaseHelper extends SQLiteOpenHelper {
             String horsepower = cursor.getString(5);
             String mileage = cursor.getString(6);
             String carDesc = cursor.getString(7);
-            int categoryId = cursor.getInt(8);
-            String categoryImg = cursor.getString(9);
-            String categoryName = cursor.getString(10);
+            double latitude = cursor.getDouble(8);
+            double longitude = cursor.getDouble(9);
+            int lessorId = cursor.getInt(10);
+            int categoryId = cursor.getInt(11);
+            String categoryImg = cursor.getString(12);
+            String categoryName = cursor.getString(13);
 
-            Car car = new Car(id, carImg, carName, rentalPrice, maxSpeed, horsepower, mileage, carDesc, categoryId, categoryImg, categoryName);
+            Car car = new Car(id, carImg, carName, rentalPrice, maxSpeed, horsepower, mileage, carDesc, latitude, longitude, lessorId, categoryId, categoryImg, categoryName);
 
             // Adding car to list
             carList.add(car);

@@ -18,20 +18,37 @@
         android:theme="@style/Theme.CarRental"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDKhV86CCjNXNLM83nU_BlsGJTq3PsSdVk" />
+
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".view.CarDetailActivity"
-            android:exported="true"/>
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.OrderCarActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".SettingsActivity"
-            android:exported="true"/>
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DateTime"
+            android:exported="true"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

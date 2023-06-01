@@ -6,10 +6,7 @@
     android:layout_height="match_parent"
  >
 
- <ScrollView
-     android:layout_width="match_parent"
-     android:layout_height="match_parent"
-     android:scrollbars="none">
+
      <LinearLayout
          android:layout_width="match_parent"
          android:layout_height="match_parent">
@@ -35,28 +32,13 @@
                      android:src="@drawable/back" />
              </androidx.cardview.widget.CardView>
 
-             <androidx.cardview.widget.CardView
-                 android:layout_width="40dp"
-                 android:layout_height="40dp"
-                 android:layout_margin="20dp"
-                 app:cardCornerRadius="50dp"
-                 app:layout_constraintEnd_toEndOf="parent"
-                 app:layout_constraintTop_toTopOf="parent">
 
-                 <ImageView
-                     android:id="@+id/header_map"
-                     android:layout_width="match_parent"
-                     android:layout_height="match_parent"
-                     android:layout_gravity="center"
-                     android:padding="5dp"
-                     android:src="@drawable/way" />
-             </androidx.cardview.widget.CardView>
-
-             <ImageView
-                 android:id="@+id/mapView"
+             <fragment
+                 android:id="@+id/map"
                  android:layout_width="match_parent"
-                 android:layout_height="300dp"
+                 android:layout_height="260dp"
                  android:background="@drawable/em_quynh"
+                 android:name="com.google.android.gms.maps.SupportMapFragment"
                  app:layout_constraintEnd_toEndOf="parent"
                  app:layout_constraintStart_toStartOf="parent"
                  app:layout_constraintTop_toTopOf="parent" />
@@ -64,26 +46,26 @@
              <androidx.constraintlayout.widget.ConstraintLayout
                  android:id="@+id/constraintLayout"
                  android:layout_width="match_parent"
-                 android:layout_height="170dp"
-                 android:layout_marginTop="-50dp"
+                 android:layout_height="150dp"
+                 android:layout_marginTop="-30dp"
                  android:background="@drawable/background_order_content"
                  android:padding="20dp"
-                 app:layout_constraintTop_toBottomOf="@+id/mapView">
+                 app:layout_constraintTop_toBottomOf="@+id/map">
 
                  <TextView
-                     android:id="@+id/b_n_ang_t_m"
-                     android:layout_width="220dp"
+                     android:id="@+id/textView_Name"
+                     android:layout_width="240dp"
                      android:layout_height="wrap_content"
                      android:lineHeight="30sp"
                      android:text="Red Mazda 6 - Elite Estate"
                      android:textColor="#ffffff"
-                     android:textSize="22sp"
+                     android:textSize="20sp"
                      android:textStyle="bold"
                      app:layout_constraintStart_toStartOf="parent"
                      app:layout_constraintTop_toTopOf="parent" />
 
                  <TextView
-
+                     android:id="@+id/textView_brand"
                      android:layout_width="220dp"
                      android:layout_height="wrap_content"
                      android:alpha="0.8"
@@ -91,9 +73,8 @@
                      android:text="Yamaha"
                      android:textColor="#ffffff"
                      android:textSize="16sp"
-
                      app:layout_constraintStart_toStartOf="parent"
-                     app:layout_constraintTop_toBottomOf="@+id/b_n_ang_t_m" />
+                     app:layout_constraintTop_toBottomOf="@+id/textView_Name" />
 
                  <TextView
                      android:layout_width="wrap_content"
@@ -110,241 +91,254 @@
                      app:layout_constraintTop_toTopOf="parent" />
              </androidx.constraintlayout.widget.ConstraintLayout>
 
-             <androidx.constraintlayout.widget.ConstraintLayout
-                 android:layout_width="match_parent"
-                 android:layout_height="500dp"
-                 android:layout_marginTop="-50dp"
-                 android:background="@drawable/background_order_content"
-                 android:backgroundTint="#fff"
-                 android:padding="20dp"
-                 app:layout_constraintEnd_toEndOf="parent"
-                 app:layout_constraintHorizontal_bias="0.0"
-                 app:layout_constraintStart_toStartOf="parent"
-                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="500dp"
+                android:scrollbars="none"
+                android:padding="20dp"
+                android:layout_marginTop="-50dp"
+                android:background="@drawable/background_order_content"
+                android:backgroundTint="#fff"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
 
-                 <TextView
-                     android:id="@+id/text"
-                     android:layout_width="220dp"
-                     android:layout_height="wrap_content"
-                     android:lineHeight="30sp"
-                     android:text="Overview"
-                     android:textColor="@color/black"
-                     android:textSize="20sp"
-                     android:textStyle="bold"
-                     app:layout_constraintStart_toStartOf="parent"
-                     app:layout_constraintTop_toTopOf="parent" />
+                  >
 
-                 <LinearLayout
-                     android:id="@+id/linearLayout"
-                     android:layout_width="match_parent"
-                     android:layout_height="wrap_content"
-                     android:gravity="center_horizontal"
-                     app:layout_constraintEnd_toEndOf="parent"
-                     app:layout_constraintStart_toStartOf="parent"
-                     app:layout_constraintTop_toBottomOf="@+id/text">
+                        <TextView
+                            android:id="@+id/text"
+                            android:layout_width="220dp"
+                            android:layout_height="wrap_content"
+                            android:lineHeight="30sp"
+                            android:text="Overview"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                     <LinearLayout
-                         android:layout_width="160dp"
-                         android:layout_height="70dp"
-                         android:layout_marginTop="20dp"
-                         android:background="@drawable/background_properties"
-                         android:orientation="vertical"
-                         android:padding="5dp">
+                        <LinearLayout
+                            android:id="@+id/linearLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/text">
 
-                         <TextView
-                             android:layout_width="match_parent"
-                             android:layout_height="wrap_content"
-                             android:paddingLeft="10dp"
-                             android:text="Start"
-                             android:textColor="@color/gray"
-                             android:textSize="16sp" />
+                            <LinearLayout
+                                android:layout_width="160dp"
+                                android:layout_height="70dp"
+                                android:layout_marginTop="20dp"
+                                android:background="@drawable/background_properties"
+                                android:orientation="vertical"
+                                android:padding="5dp">
 
-                         <TextView
-                             android:id="@+id/textView_ps"
-                             android:layout_width="match_parent"
-                             android:layout_height="wrap_content"
-                             android:layout_marginTop="5dp"
-                             android:paddingLeft="10dp"
-                             android:text="22 Feb 2022"
-                             android:textAlignment="textStart"
-                             android:textColor="#000000"
-                             android:textSize="16sp"
-                             android:textStyle="bold" />
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:paddingLeft="10dp"
+                                    android:text="Start"
+                                    android:textColor="@color/gray"
+                                    android:textSize="16sp" />
 
-                     </LinearLayout>
+                                <TextView
+                                    android:id="@+id/textView_start"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:paddingLeft="10dp"
+                                    android:text="22 Feb 2022"
+                                    android:textAlignment="textStart"
+                                    android:textColor="#000000"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
 
-                     <LinearLayout
+                            </LinearLayout>
 
-                         android:layout_width="160dp"
-                         android:layout_height="70dp"
-                         android:layout_marginLeft="20dp"
-                         android:layout_marginTop="20dp"
-                         android:background="@drawable/background_properties"
-                         android:orientation="vertical"
-                         android:padding="5dp">
+                            <LinearLayout
 
-                         <TextView
-                             android:layout_width="match_parent"
-                             android:layout_height="wrap_content"
-                             android:paddingLeft="10dp"
-                             android:text="End"
-                             android:textColor="@color/gray"
-                             android:textSize="16sp" />
+                                android:layout_width="160dp"
+                                android:layout_height="70dp"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginTop="20dp"
+                                android:background="@drawable/background_properties"
+                                android:orientation="vertical"
+                                android:padding="5dp">
 
-                         <TextView
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:paddingLeft="10dp"
+                                    android:text="End"
+                                    android:textColor="@color/gray"
+                                    android:textSize="16sp" />
 
-                             android:layout_width="match_parent"
-                             android:layout_height="wrap_content"
-                             android:layout_marginTop="5dp"
-                             android:paddingLeft="10dp"
-                             android:text="28 Feb 2022"
-                             android:textAlignment="textStart"
-                             android:textColor="#000000"
-                             android:textSize="16sp"
-                             android:textStyle="bold" />
+                                <TextView
+                                    android:id="@+id/textView_end"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:paddingLeft="10dp"
+                                    android:text="28 Feb 2022"
+                                    android:textAlignment="textStart"
+                                    android:textColor="#000000"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
 
 
-                     </LinearLayout>
-                 </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
 
-                 <LinearLayout
-                     android:id="@+id/layout"
-                     android:layout_width="match_parent"
-                     android:layout_height="wrap_content"
-                     android:layout_marginTop="15dp"
-                     android:orientation="vertical"
-                     app:layout_constraintStart_toStartOf="parent"
-                     app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+                        <LinearLayout
+                            android:id="@+id/layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:orientation="vertical"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
-                     <TextView
-                         android:layout_width="220dp"
-                         android:layout_height="wrap_content"
-                         android:lineHeight="30sp"
-                         android:text="Pick-up location"
-                         android:textColor="@color/black"
-                         android:textSize="20sp"
-                         android:textStyle="bold" />
+                            <TextView
+                                android:layout_width="220dp"
+                                android:layout_height="wrap_content"
+                                android:lineHeight="30sp"
+                                android:text="Pick-up location"
+                                android:textColor="@color/black"
+                                android:textSize="20sp"
+                                android:textStyle="bold" />
 
-                     <androidx.constraintlayout.widget.ConstraintLayout
-                         android:layout_width="match_parent"
-                         android:layout_height="50dp"
-                         android:layout_marginTop="20dp"
-                         android:background="@drawable/background_properties"
-                         android:gravity="center_vertical"
-                         android:paddingLeft="10dp"
-                         android:paddingRight="20dp">
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:layout_marginTop="20dp"
+                                android:background="@drawable/background_properties"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="20dp">
 
-                         <TextView
-                             android:layout_width="240dp"
-                             android:layout_height="match_parent"
-                             android:drawableStart="@drawable/location"
-                             android:drawablePadding="10dp"
-                             android:gravity="center_vertical"
-                             android:lines="1"
-                             android:text="Hai Bà Trưng, tp Huế"
-                             android:textColor="@color/black"
-                             android:textSize="18sp"
-                             android:textStyle="bold"
-                             app:layout_constraintBottom_toBottomOf="parent"
-                             app:layout_constraintStart_toStartOf="parent"
-                             app:layout_constraintTop_toTopOf="parent" />
+                                <TextView
+                                    android:id="@+id/textView_pickup_location"
+                                    android:layout_width="240dp"
+                                    android:layout_height="match_parent"
+                                    android:drawableStart="@drawable/location"
+                                    android:drawablePadding="10dp"
+                                    android:gravity="center_vertical"
+                                    android:lines="1"
+                                    android:text="Hai Bà Trưng, tp Huế"
+                                    android:textColor="@color/black"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
 
-                         <TextView
-                             android:layout_width="wrap_content"
-                             android:layout_height="match_parent"
-                             android:gravity="center_vertical"
-                             android:text="0.5 km"
-                             android:textColor="@color/gray"
-                             android:textSize="16sp"
-                             app:layout_constraintBottom_toBottomOf="parent"
-                             app:layout_constraintEnd_toEndOf="parent"
-                             app:layout_constraintTop_toTopOf="parent" />
-                     </androidx.constraintlayout.widget.ConstraintLayout>
-                 </LinearLayout>
+                                <TextView
+                                    android:id="@+id/textView_distance"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center_vertical"
+                                    android:text="0.5 km"
+                                    android:textColor="@color/gray"
+                                    android:textSize="16sp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </LinearLayout>
 
-                 <LinearLayout
-                     android:id="@+id/layout1"
-                     android:layout_width="match_parent"
-                     android:layout_height="wrap_content"
-                     android:layout_marginTop="15dp"
-                     android:orientation="vertical"
-                     app:layout_constraintStart_toStartOf="parent"
-                     app:layout_constraintTop_toBottomOf="@+id/layout">
+                        <LinearLayout
+                            android:id="@+id/layout1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:orientation="vertical"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/layout">
 
-                     <TextView
-                         android:layout_width="220dp"
-                         android:layout_height="wrap_content"
-                         android:lineHeight="30sp"
-                         android:text="Payment"
-                         android:textColor="@color/black"
-                         android:textSize="20sp"
-                         android:textStyle="bold" />
+                            <TextView
+                                android:layout_width="220dp"
+                                android:layout_height="wrap_content"
+                                android:lineHeight="30sp"
+                                android:text="Payment"
+                                android:textColor="@color/black"
+                                android:textSize="20sp"
+                                android:textStyle="bold" />
 
-                     <androidx.constraintlayout.widget.ConstraintLayout
-                         android:layout_width="match_parent"
-                         android:layout_height="70dp"
-                         android:layout_marginTop="20dp"
-                         android:background="@drawable/background_properties"
-                         android:gravity="center_vertical"
-                         android:paddingLeft="10dp"
-                         android:paddingRight="20dp">
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="70dp"
+                                android:layout_marginTop="20dp"
+                                android:background="@drawable/background_properties"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="20dp">
 
-                         <ImageView
-                             android:id="@+id/view"
-                             android:layout_width="60dp"
-                             android:layout_height="match_parent"
-                             android:padding="7dp"
-                             android:src="@drawable/ic_edit_profile"
-                             app:layout_constraintBottom_toBottomOf="parent"
-                             app:layout_constraintStart_toStartOf="parent"
-                             app:layout_constraintTop_toTopOf="parent" />
+                                <ImageView
+                                    android:id="@+id/view"
+                                    android:layout_width="60dp"
+                                    android:layout_height="match_parent"
+                                    android:padding="7dp"
+                                    android:src="@drawable/ic_edit_profile"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
 
-                         <LinearLayout
-                             android:id="@+id/linearLayout3"
-                             android:layout_width="wrap_content"
-                             android:layout_height="wrap_content"
-                             android:layout_margin="10dp"
-                             android:orientation="vertical"
-                             app:layout_constraintStart_toEndOf="@+id/view"
-                             app:layout_constraintTop_toTopOf="parent">
+                                <LinearLayout
+                                    android:id="@+id/linearLayout3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="10dp"
+                                    android:orientation="vertical"
+                                    app:layout_constraintStart_toEndOf="@+id/view"
+                                    app:layout_constraintTop_toTopOf="parent">
 
-                             <TextView
-                                 android:id="@+id/textView3"
-                                 android:layout_width="wrap_content"
-                                 android:layout_height="wrap_content"
-                                 android:text="MasterCard"
-                                 android:textColor="@color/black"
-                                 android:textSize="18sp"
-                                 android:textStyle="bold" />
+                                    <TextView
+                                        android:id="@+id/textView3"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Ví điện tử MoMo"
+                                        android:textColor="@color/black"
+                                        android:textSize="18sp"
+                                        android:textStyle="bold" />
 
-                             <TextView
-                                 android:layout_width="wrap_content"
-                                 android:layout_height="match_parent"
-                                 android:gravity="center_vertical"
-                                 android:text="190 015 689 110 8752"
-                                 android:textColor="@color/gray"
-                                 android:textSize="16sp" />
-                         </LinearLayout>
+                                    <TextView
+                                        android:id="@+id/textView_momo"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="match_parent"
+                                        android:gravity="center_vertical"
+                                        android:text="0396 645 921"
+                                        android:textColor="@color/gray"
+                                        android:textSize="16sp" />
+                                </LinearLayout>
 
-                         <View
-                             android:layout_width="15dp"
-                             android:layout_height="20dp"
-                             android:background="@drawable/ic_more"
-                             android:backgroundTint="@color/gray"
-                             app:layout_constraintBottom_toBottomOf="parent"
-                             app:layout_constraintEnd_toEndOf="parent"
-                             app:layout_constraintTop_toTopOf="parent" />
-                     </androidx.constraintlayout.widget.ConstraintLayout>
-                 </LinearLayout>
-             </androidx.constraintlayout.widget.ConstraintLayout>
+                                <View
+                                    android:layout_width="15dp"
+                                    android:layout_height="20dp"
+                                    android:background="@drawable/ic_more"
+                                    android:backgroundTint="@color/gray"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </LinearLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </LinearLayout>
+            </ScrollView>
          </androidx.constraintlayout.widget.ConstraintLayout>
 
      </LinearLayout>
- </ScrollView>
+
     <LinearLayout
-        android:id="@+id/button_buy"
+        android:id="@+id/button_paynow"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_margin="20dp"
 
