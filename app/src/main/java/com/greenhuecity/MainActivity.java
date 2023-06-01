@@ -2,9 +2,12 @@ package com.greenhuecity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.viewpager2.widget.ViewPager2;
 
-import android.annotation.SuppressLint;
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -46,6 +49,13 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+        // Kiểm tra quyền truy cập vị trí
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            // Quyền truy cập vị trí đã được cấp, bắt đầu sử dụng tính năng liên quan đến vị trí
+        } else {
+            // Yêu cầu cấp quyền truy cập vị trí
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+        }
 
     }
 
@@ -55,5 +65,20 @@ public class MainActivity extends AppCompatActivity {
         viewPager2.setUserInputEnabled(false);
 
     }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode) {
+            case 1: {
+                // Nếu yêu cầu bị hủy bỏ, mảng kết quả sẽ rỗng.
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // Quyền truy cập vị trí đã được cấp, bắt đầu sử dụng tính năng liên quan đến vị trí
+                } else {
+                    // Yêu cầu cấp quyền truy cập vị trí đã bị từ chối
+                }
+            }
+        }
+    }
+
 
 }
