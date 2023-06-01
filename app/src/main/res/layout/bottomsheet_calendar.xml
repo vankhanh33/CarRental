@@ -123,7 +123,7 @@
  </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
-        android:id="@+id/button_buy"
+        android:id="@+id/button_ok"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"

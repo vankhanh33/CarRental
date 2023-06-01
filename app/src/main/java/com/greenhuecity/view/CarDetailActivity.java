@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -45,7 +44,7 @@ public class CarDetailActivity extends AppCompatActivity implements CarDetailCon
         if (isCheckCarFavoriteDB(car)) img_heart.setImageResource(R.drawable.favorite);
         else img_heart.setImageResource(R.drawable.heart);
         img_heart.setOnClickListener(view -> mPresenter.updateDataFavorite(car, img_heart));
-        Intent intent = new Intent(this, OrderCarActivity.class);
+        Intent intent = new Intent(this, RentCarActivity.class);
         intent.putExtra("car",car);
         btnBooking.setOnClickListener(view-> startActivity(intent));
     }
