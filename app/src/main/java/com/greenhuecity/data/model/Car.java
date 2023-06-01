@@ -7,11 +7,13 @@ public class Car implements Serializable {
     String car_img,car_name;
     int rental_price;
     String max_speed,horsepower,mileage,car_description;
-    int category_id;
+    double latitude, longitude;
+    int lessor_id,category_id;
     String category_img,category_name;
 
     //Lấy thông tin xe và hãng
-    public Car(int car_id, String car_img, String car_name, int rental_price, String max_speed, String horsepower, String mileage, String car_description, int category_id, String category_img, String category_name) {
+
+    public Car(int car_id, String car_img, String car_name, int rental_price, String max_speed, String horsepower, String mileage, String car_description, double latitude, double longitude, int lessor_id, int category_id, String category_img, String category_name) {
         this.car_id = car_id;
         this.car_img = car_img;
         this.car_name = car_name;
@@ -20,12 +22,16 @@ public class Car implements Serializable {
         this.horsepower = horsepower;
         this.mileage = mileage;
         this.car_description = car_description;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.lessor_id = lessor_id;
         this.category_id = category_id;
         this.category_img = category_img;
         this.category_name = category_name;
     }
+
     //Lấy thông tin xe
-    public Car(int car_id, String car_img, String car_name, int rental_price, String max_speed, String horsepower, String mileage, String car_description, int category_id) {
+    public Car(int car_id, String car_img, String car_name, int rental_price, String max_speed, String horsepower, String mileage, String car_description, double latitude, double longitude, int lessor_id, int category_id) {
         this.car_id = car_id;
         this.car_img = car_img;
         this.car_name = car_name;
@@ -34,7 +40,9 @@ public class Car implements Serializable {
         this.horsepower = horsepower;
         this.mileage = mileage;
         this.car_description = car_description;
-
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.lessor_id = lessor_id;
         this.category_id = category_id;
     }
 
@@ -80,5 +88,17 @@ public class Car implements Serializable {
 
     public String getCategory_name() {
         return category_name;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public int getLessor_id() {
+        return lessor_id;
     }
 }

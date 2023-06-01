@@ -41,12 +41,9 @@ public class CarRecyclerViewAdapter extends RecyclerView.Adapter<CarRecyclerView
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        // vị trí xóa ở fragment favorite
         Car car = mList.get(position);
-
         Glide.with(mContext).load(car.getCar_img()).into(holder.imgCar);
         holder.tvName.setText(car.getCar_name());
-
         Locale locale = new Locale("vi", "VN");
         NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(locale);
         holder.tvPrice.setText(currencyFormatter.format(car.getRental_price()) + "/ ngày");

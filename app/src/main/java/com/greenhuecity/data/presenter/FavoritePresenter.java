@@ -31,6 +31,7 @@ public class FavoritePresenter implements FavoriteContract.IPresenter {
 
     @Override
     public void getCarList( Context context) {
+        Toast.makeText(context, db.getAllCars().size() + "", Toast.LENGTH_SHORT).show();
         if(db.getAllCars() != null && !db.getAllCars().isEmpty()){
             mView.setDataRecyclerViewCar(db.getAllCars());
             mView.setDataExist();

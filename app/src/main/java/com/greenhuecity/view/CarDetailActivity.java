@@ -1,7 +1,9 @@
 package com.greenhuecity.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +24,7 @@ import java.util.Locale;
 public class CarDetailActivity extends AppCompatActivity implements CarDetailContract.IView {
     ImageView img, img_heart;
     TextView tvName, tvMaxSpeed, tvHoursPower, tvMileage, tvDescription, tvPrice;
+    LinearLayout btnBooking;
     CarDetailPresenter mPresenter;
     Car car = null;
     FavoriteCarDatabaseHelper db;
@@ -34,7 +37,6 @@ public class CarDetailActivity extends AppCompatActivity implements CarDetailCon
         initGUI();
 
         db = new FavoriteCarDatabaseHelper(this);
-//        for (int i = 0; i< db.getAllCars().size();i++) db.deleteCar(db.getAllCars().get(i).getCar_id());
         car = (Car) getIntent().getSerializableExtra("car");
         if (car != null) {
             mPresenter = new CarDetailPresenter(this,this);
@@ -43,8 +45,9 @@ public class CarDetailActivity extends AppCompatActivity implements CarDetailCon
         if (isCheckCarFavoriteDB(car)) img_heart.setImageResource(R.drawable.favorite);
         else img_heart.setImageResource(R.drawable.heart);
         img_heart.setOnClickListener(view -> mPresenter.updateDataFavorite(car, img_heart));
-        if (db.getAllCars().size() != 0)
-            Toast.makeText(this, db.getAllCars().size() + "a", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, OrderCarActivity.class);
+        intent.putExtra("car",car);
+        btnBooking.setOnClickListener(view-> startActivity(intent));
     }
 
     private void initGUI() {
@@ -56,6 +59,7 @@ public class CarDetailActivity extends AppCompatActivity implements CarDetailCon
         tvMileage = findViewById(R.id.textView_km_l);
         tvDescription = findViewById(R.id.textView_description);
         tvPrice = findViewById(R.id.textView_priceDetail);
+        btnBooking = findViewById(R.id.button_booking);
     }
 
     @Override

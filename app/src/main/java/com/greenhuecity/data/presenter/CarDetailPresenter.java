@@ -1,6 +1,7 @@
 package com.greenhuecity.data.presenter;
 
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.lifecycle.ViewModelProvider;
 
@@ -34,6 +35,7 @@ public class CarDetailPresenter implements CarDetailContract.IPresenter {
         if(!mView.isCheckCarFavoriteDB(car)) {
             img.setImageResource(R.drawable.favorite);
             db.addCar(car);
+            Toast.makeText(activity, db.getAllCars().size() + "", Toast.LENGTH_SHORT).show();
         }
         else {
             img.setImageResource(R.drawable.heart);
