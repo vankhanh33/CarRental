@@ -1,17 +1,19 @@
 package com.greenhuecity.data.contract;
 
-import android.content.Context;
 import android.widget.ImageView;
 
-import com.greenhuecity.data.model.Car;
+import com.greenhuecity.data.model.Cars;
+import com.greenhuecity.data.model.Distributors;
 
 public interface CarDetailContract {
     interface IView{
-        void setDataDetailCar(Car car);
-        boolean isCheckCarFavoriteDB(Car car);
+        void setDataDetailCar(Cars car);
+        boolean isCheckCarFavoriteDB(Cars car);
+        void setDistributors(Distributors distributors);
     }
     interface IPresenter{
-        void getDataDetailCar(Car car);
-        void updateDataFavorite(Car car, ImageView img);
+        void getDataDetailCar(Cars car);
+        void updateDataFavorite(Cars car, ImageView img);
+        void getDistributors(int id);
     }
 }

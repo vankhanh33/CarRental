@@ -1,13 +1,7 @@
 package com.greenhuecity.view;
 
-import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.graphics.Color;
-import android.location.Address;
-import android.location.Geocoder;
-import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
 
@@ -15,43 +9,26 @@ import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
 
 
-import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.model.PolylineOptions;
-
-import com.google.maps.DirectionsApi;
-
-import com.google.maps.GeoApiContext;
-
-import com.google.maps.model.DirectionsResult;
-import com.google.maps.model.DirectionsRoute;
-import com.google.maps.model.TravelMode;
 import com.greenhuecity.MainActivity;
 import com.greenhuecity.R;
 import com.greenhuecity.data.contract.RentCarConstract;
-import com.greenhuecity.data.model.Car;
+import com.greenhuecity.data.model.Cars;
 import com.greenhuecity.data.presenter.RentCarPresenter;
 import com.greenhuecity.data.remote.OnBottomSheetListener;
 
 
-import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 
 
@@ -61,7 +38,7 @@ public class RentCarActivity extends AppCompatActivity implements OnMapReadyCall
     private GoogleMap mMap;
     private LocationManager locationManager;
 
-    Car car;
+    Cars car;
     RentCarPresenter mPresenter;
     String start_date,end_date;
 
@@ -72,7 +49,7 @@ public class RentCarActivity extends AppCompatActivity implements OnMapReadyCall
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order);
         initGUI();
-        car = (Car) getIntent().getSerializableExtra("car");
+        car = (Cars) getIntent().getSerializableExtra("car");
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         // Khởi tạo LocationManager
@@ -111,7 +88,7 @@ public class RentCarActivity extends AppCompatActivity implements OnMapReadyCall
                     // Tính toán khoảng cách giữa hai đối tượng Date
                     long diffInMillis = endDate.getTime() - startDate.getTime();
                     int diffInDays = (int) (diffInMillis / (24 * 60 * 60 * 1000));
-                    mPresenter.upRentCar(car,start_date,end_date,car.getRental_price() * diffInDays);
+                    mPresenter.upRentCar(car,start_date,end_date,(int) car.getPrice() * diffInDays);
                     startActivity(new Intent(RentCarActivity.this, MainActivity.class));
                 } catch (ParseException e) {
                     // Xử lý ngoại lệ khi không thể chuyển đổi chuỗi ngày thành đối tượng Date
@@ -159,9 +136,9 @@ public class RentCarActivity extends AppCompatActivity implements OnMapReadyCall
 
 
     @Override
-    public void setCarInfo(Car car) {
+    public void setCarInfo(Cars car) {
         tvName.setText(car.getCar_name());
-        tvBrand.setText(car.getCategory_name());
+        tvBrand.setText(car.getBrand_id());
     }
 
     @Override

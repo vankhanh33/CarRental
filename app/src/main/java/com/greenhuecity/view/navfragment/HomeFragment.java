@@ -31,9 +31,11 @@ public class HomeFragment extends Fragment {
         new TabLayoutMediator(tabLayout,viewPager2,(tab, position) -> {
             switch (position){
                 case 0: tab.setText("Nổi bật");break;
-                case 1: tab.setText("PKL");break;
-                case 2: tab.setText("Honda");break;
-                case 3: tab.setText("Yamaha");break;
+                case 1: tab.setText("Honda");break;
+                case 2: tab.setText("Yamaha");break;
+                case 3: tab.setText("Ducati");break;
+                case 4: tab.setText("BMW");break;
+                case 5: tab.setText("Aprilia");break;
 
             }
         }).attach();

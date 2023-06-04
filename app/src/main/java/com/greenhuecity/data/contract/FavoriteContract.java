@@ -2,13 +2,13 @@ package com.greenhuecity.data.contract;
 
 import android.content.Context;
 
-import com.greenhuecity.data.model.Car;
+import com.greenhuecity.data.model.Cars;
 
 import java.util.List;
 
 public interface FavoriteContract {
     interface IView{
-        void setDataRecyclerViewCar(List<Car> mList);
+        void setDataRecyclerViewCar(List<Cars> mList);
         void setDataEmpty(String mess);
         void setDataExist();
     }

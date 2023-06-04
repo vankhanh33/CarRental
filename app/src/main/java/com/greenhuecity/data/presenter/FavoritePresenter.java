@@ -1,25 +1,19 @@
 package com.greenhuecity.data.presenter;
 
-import static android.content.Context.MODE_PRIVATE;
-
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.greenhuecity.data.contract.FavoriteContract;
 import com.greenhuecity.data.database.FavoriteCarDatabaseHelper;
-import com.greenhuecity.data.model.Car;
+import com.greenhuecity.data.model.Cars;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class FavoritePresenter implements FavoriteContract.IPresenter {
     FavoriteContract.IView mView;
-    List<Car> carList;
+    List<Cars> carList;
     FavoriteCarDatabaseHelper db;
 
     public FavoritePresenter(FavoriteContract.IView mView,Context context) {

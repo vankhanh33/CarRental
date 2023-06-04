@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.greenhuecity.R;
 import com.greenhuecity.data.contract.HomeContract;
-import com.greenhuecity.data.model.Car;
+import com.greenhuecity.data.model.Cars;
 import com.greenhuecity.data.presenter.HomePresenter;
 import com.greenhuecity.view.adapter.CarRecyclerViewAdapter;
 
@@ -28,12 +28,12 @@ public class CarFragment extends Fragment implements HomeContract.IView {
 
 
     CarRecyclerViewAdapter mAdapter;
-    List<Car> carList;
-    String id;
+    List<Cars> carList;
+    String brands;
 
 
-    public CarFragment(String id) {
-        this.id = id;
+    public CarFragment(String brands) {
+        this.brands = brands;
     }
 
 
@@ -50,13 +50,13 @@ public class CarFragment extends Fragment implements HomeContract.IView {
 
 
         brandPresenter = new HomePresenter(this);
-        brandPresenter.getCarList(id);
+        brandPresenter.getCarList(brands);
 
         return view;
     }
 
     @Override
-    public void setDataRecyclerViewCar(List<Car> mList) {
+    public void setDataRecyclerViewCar(List<Cars> mList) {
         carList = mList;
         mAdapter = new CarRecyclerViewAdapter(carList, getContext());
         rvCar.setAdapter(mAdapter);

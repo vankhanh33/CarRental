@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.greenhuecity.R;
-import com.greenhuecity.data.model.Car;
+import com.greenhuecity.data.model.Cars;
 import com.greenhuecity.view.CarDetailActivity;
 
 import java.text.NumberFormat;
@@ -22,11 +22,11 @@ import java.util.List;
 import java.util.Locale;
 
 public class CarRecyclerViewAdapter extends RecyclerView.Adapter<CarRecyclerViewAdapter.ViewHolder> {
-    private List<Car> mList;
+    private List<Cars> mList;
     private Context mContext;
-    List<Car> favoriteCarList;
+    List<Cars> favoriteCarList;
 
-    public CarRecyclerViewAdapter(List<Car> list, Context context) {
+    public CarRecyclerViewAdapter(List<Cars> list, Context context) {
         mList = list;
         mContext = context;
         favoriteCarList = new ArrayList<>();
@@ -41,13 +41,14 @@ public class CarRecyclerViewAdapter extends RecyclerView.Adapter<CarRecyclerView
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Car car = mList.get(position);
+        Cars car = mList.get(position);
         Glide.with(mContext).load(car.getCar_img()).into(holder.imgCar);
         holder.tvName.setText(car.getCar_name());
         Locale locale = new Locale("vi", "VN");
         NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(locale);
-        holder.tvPrice.setText(currencyFormatter.format(car.getRental_price()) + "/ ngày");
-        Glide.with(mContext).load(car.getCategory_img()).into(holder.imgBrand);
+        holder.tvPrice.setText(currencyFormatter.format(car.getPrice()) + "/ ngày");
+        holder.tvPower.setText(car.getPower_name());
+        Glide.with(mContext).load(car.getBrand_img()).into(holder.imgBrand);
         holder.imgCar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,7 +67,7 @@ public class CarRecyclerViewAdapter extends RecyclerView.Adapter<CarRecyclerView
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView tvName, tvPrice;
+        private TextView tvName, tvPrice, tvPower;
         private ImageView imgCar, imgBrand;
 
         public ViewHolder(@NonNull View itemView) {
@@ -76,6 +77,7 @@ public class CarRecyclerViewAdapter extends RecyclerView.Adapter<CarRecyclerView
             imgBrand = itemView.findViewById(R.id.imageView_brandCar);
             tvName = itemView.findViewById(R.id.textView_nameCar);
             tvPrice = itemView.findViewById(R.id.textView_priceCar);
+            tvPower = itemView.findViewById(R.id.textView_power);
         }
     }
 }
