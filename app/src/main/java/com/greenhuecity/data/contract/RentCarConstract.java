@@ -2,7 +2,7 @@ package com.greenhuecity.data.contract;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
-import com.greenhuecity.data.model.Car;
+import com.greenhuecity.data.model.Cars;
 
 public interface RentCarConstract {
     interface IView {
@@ -10,7 +10,7 @@ public interface RentCarConstract {
 
         void setDataTvRental();
 
-        void setCarInfo(Car car);
+        void setCarInfo(Cars car);
 
         void showDistance(String formattedDistance);
 
@@ -18,14 +18,14 @@ public interface RentCarConstract {
     }
 
     interface IPresenter {
-        void getCar(Car car);
+        void getCar(Cars car);
 
-        void onMapReady(GoogleMap googleMap, Car car);
+        void onMapReady(GoogleMap googleMap, Cars car);
 
         void drawRoute(GoogleMap googleMap, LatLng origin, LatLng destination);
 
         void getAddressFromLatLng(LatLng latLng);
 
-        void upRentCar(Car car, String date_start, String date_end, int price);
+        void upRentCar(Cars car, String date_start, String date_end, int price);
     }
 }

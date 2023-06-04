@@ -11,13 +11,10 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager2.widget.ViewPager2;
 
-import com.google.android.material.tabs.TabLayout;
-import com.google.android.material.tabs.TabLayoutMediator;
 import com.greenhuecity.R;
 import com.greenhuecity.data.contract.FavoriteContract;
-import com.greenhuecity.data.model.Car;
+import com.greenhuecity.data.model.Cars;
 import com.greenhuecity.data.presenter.FavoritePresenter;
 import com.greenhuecity.view.adapter.CarRecyclerViewAdapter;
 
@@ -42,7 +39,7 @@ public class FavoriteFragment extends Fragment implements FavoriteContract.IView
     }
 
     @Override
-    public void setDataRecyclerViewCar(List<Car> mList) {
+    public void setDataRecyclerViewCar(List<Cars> mList) {
         CarRecyclerViewAdapter adapter = new CarRecyclerViewAdapter(mList,requireContext());
         rvCar.setAdapter(adapter);
         adapter.notifyDataSetChanged();

@@ -21,7 +21,7 @@ import com.google.maps.model.DirectionsResult;
 import com.google.maps.model.DirectionsRoute;
 import com.google.maps.model.TravelMode;
 import com.greenhuecity.data.contract.RentCarConstract;
-import com.greenhuecity.data.model.Car;
+import com.greenhuecity.data.model.Cars;
 import com.greenhuecity.data.remote.ApiService;
 import com.greenhuecity.data.remote.RetrofitClient;
 import com.greenhuecity.view.RentCarActivity;
@@ -51,12 +51,12 @@ public class RentCarPresenter implements RentCarConstract.IPresenter {
     }
 
     @Override
-    public void getCar(Car car) {
+    public void getCar(Cars car) {
         mView.setCarInfo(car);
     }
 
     @Override
-    public void onMapReady(GoogleMap googleMap, Car car) {
+    public void onMapReady(GoogleMap googleMap, Cars car) {
         if (ActivityCompat.checkSelfPermission(rentCarActivity, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             googleMap.setMyLocationEnabled(true);
             googleMap.getUiSettings().setMyLocationButtonEnabled(true);
@@ -64,7 +64,7 @@ public class RentCarPresenter implements RentCarConstract.IPresenter {
             Location lastKnownLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
             if (lastKnownLocation != null) {
                 LatLng origin = new LatLng(lastKnownLocation.getLatitude(), lastKnownLocation.getLongitude());
-                LatLng destination = new LatLng(car.getLatitude(), car.getLongitude());
+                LatLng destination = new LatLng(lastKnownLocation.getLatitude(), lastKnownLocation.getLongitude());
                 drawRoute(googleMap, origin, destination);
                 //khoảng cách
                 Location locationA = new Location("point A");
@@ -146,15 +146,15 @@ public class RentCarPresenter implements RentCarConstract.IPresenter {
     }
 
     @Override
-    public void upRentCar(Car car, String date_start, String date_end, int price) {
-        apiService.upRentCar(car.getCar_id(), car.getUsers_id(), date_start, date_end, price, status, payment).enqueue(new Callback<Car>() {
+    public void upRentCar(Cars car, String date_start, String date_end, int price) {
+        apiService.upRentCar(car.getCar_id(), car.getDistributor_id(), date_start, date_end, price, status, payment).enqueue(new Callback<Cars>() {
             @Override
-            public void onResponse(Call<Car> call, Response<Car> response) {
+            public void onResponse(Call<Cars> call, Response<Cars> response) {
 
             }
 
             @Override
-            public void onFailure(Call<Car> call, Throwable t) {
+            public void onFailure(Call<Cars> call, Throwable t) {
 
             }
         });

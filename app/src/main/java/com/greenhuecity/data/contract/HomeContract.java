@@ -2,13 +2,13 @@ package com.greenhuecity.data.contract;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.greenhuecity.data.model.Car;
+import com.greenhuecity.data.model.Cars;
 
 import java.util.List;
 
 public interface HomeContract {
     interface IView{
-        void setDataRecyclerViewCar(List<Car> mList);
+        void setDataRecyclerViewCar(List<Cars> mList);
     }
     interface IPresenter{
         void getCarList(String brand);

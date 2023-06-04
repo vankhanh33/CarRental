@@ -33,7 +33,7 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    app:cardCornerRadius="50dp"
+                    app:cardCornerRadius="10dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
@@ -50,7 +50,7 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_marginEnd="10dp"
-                    app:cardCornerRadius="30dp"
+                    app:cardCornerRadius="50dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
@@ -121,7 +121,8 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -149,6 +150,79 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginTop="10dp"
+                    android:alpha="0.4"
+                    android:background="@color/gray" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="15dp"
+                    android:orientation="horizontal">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/imageView_distributor"
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/user_dp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="7dp"
+                        android:layout_toRightOf="@+id/imageView_distributor"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView_NameDistributors"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Hữu Long Media"
+                            android:textColor="#000000"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Nhà phân phối"
+                            android:textColor="@color/gray"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentRight="true">
+
+                        <LinearLayout
+                            android:layout_width="50dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="10dp"
+                            android:background="@drawable/background_properties">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:padding="10dp"
+                                android:src="@drawable/messenger" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="50dp"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/background_properties">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:padding="10dp"
+                                android:src="@drawable/icon_phone" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="15dp"
+                    android:alpha="0.4"
                     android:background="@color/gray" />
 
                 <TextView
@@ -167,95 +241,111 @@
                     android:layout_margin="10dp">
 
                     <LinearLayout
-                        android:layout_width="100dp"
-                        android:layout_height="55dp"
-                        android:background="@drawable/background_textview_rent"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/background_properties"
                         android:orientation="vertical"
-                        android:padding="5dp"
+                        android:padding="10dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Top speed"
+                            android:textColor="@color/gray"
+                            android:textSize="14sp" />
 
                         <TextView
                             android:id="@+id/textView_km.h"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="400 km/h"
-                            android:textAlignment="center"
-                            android:textColor="#ffffff"
+                            android:text="400"
+
+                            android:textColor="@color/black"
                             android:textSize="16sp"
                             android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Max speed"
-                            android:textAlignment="center"
-                            android:textColor="#ffffff"
-                            android:textSize="14sp"
-                            android:textStyle="bold" />
+                            android:text="km/h"
+
+                            android:textColor="@color/gray"
+                            android:textSize="14sp" />
+
                     </LinearLayout>
 
                     <LinearLayout
                         android:id="@+id/linearLayout"
-                        android:layout_width="100dp"
-                        android:layout_height="55dp"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
                         android:background="@drawable/background_properties"
 
                         android:orientation="vertical"
-                        android:padding="5dp"
+                        android:padding="10dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 
                         <TextView
-                            android:id="@+id/textView_ps"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="310 ps"
-                            android:textAlignment="center"
-                            android:textColor="#000000"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-
-                        <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Hours power"
-                            android:textAlignment="center"
                             android:textColor="@color/gray"
-                            android:textSize="14sp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="100dp"
-                        android:layout_height="55dp"
-                        android:layout_marginLeft="10dp"
-                        android:background="@drawable/background_properties"
-                        android:orientation="vertical"
-
-                        android:padding="5dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
+                            android:textSize="14sp" />
 
                         <TextView
-                            android:id="@+id/textView_km.l"
+                            android:id="@+id/textView_ps"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="57 km/I"
-                            android:textAlignment="center"
+                            android:text="310"
                             android:textColor="#000000"
                             android:textSize="16sp"
                             android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="ps"
+                            android:textColor="@color/gray"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/background_properties"
+                        android:orientation="vertical"
+                        android:padding="10dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Mileage"
-                            android:textAlignment="center"
                             android:textColor="@color/gray"
-                            android:textSize="14sp"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/textView_km.l"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="57"
+                            android:textColor="#000000"
+                            android:textSize="16sp"
                             android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="km/l"
+                            android:textColor="@color/gray"
+                            android:textSize="14sp" />
+
                     </LinearLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -317,7 +407,6 @@ viverra maecenas accumsan lacus vel facilisis. "
             android:layout_width="2dp"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
-
             android:alpha="0.4"
             android:background="@color/gray" />
 

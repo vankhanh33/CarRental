@@ -17,9 +17,11 @@ public class ViewPagerHomeAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         switch (position){
             case 0: return new CarFragment("");
-            case 1: return  new CarFragment("3");
-            case 2: return  new CarFragment("1");
-            case 3: return new CarFragment("2");
+            case 1: return  new CarFragment("Honda");
+            case 2: return  new CarFragment("Yamaha");
+            case 3: return new CarFragment("Ducati");
+            case 4: return new CarFragment("BMW");
+            case 5: return new CarFragment("Aprilia");
             default: return new CarFragment("");
         }
 
@@ -27,6 +29,6 @@ public class ViewPagerHomeAdapter extends FragmentStateAdapter {
 
     @Override
     public int getItemCount() {
-        return 4;
+        return 6;
     }
 }

@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="175dp"
-    android:layout_height="320dp"
+    android:layout_width="260dp"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="25dp"
     android:layout_margin="10dp"
-    app:cardElevation="5dp"
+    app:cardElevation="3dp"
     android:backgroundTint="#FFFFFF">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="295dp">
-
+        android:layout_height="320dp"
+       >
 
         <androidx.cardview.widget.CardView
             android:id="@+id/header_car"
             android:layout_margin="10dp"
             app:cardCornerRadius="15dp"
             android:layout_width="match_parent"
-            android:layout_height="160dp"
+            android:layout_height="190dp"
             app:cardElevation="0dp"
             android:backgroundTint="#31DDDADD"
             app:layout_constraintEnd_toEndOf="parent"
@@ -25,10 +25,8 @@
             app:layout_constraintTop_toTopOf="parent" >
             <ImageView
                 android:id="@+id/imageView_car"
-                android:layout_width="160dp"
-                android:layout_height="160dp"
-                android:layout_margin="10dp"
-                android:padding="10dp"
+                android:layout_width="220dp"
+                android:layout_height="150dp"
                 android:scaleType="centerInside"
                 android:src="@drawable/img_car"
                 android:layout_gravity="center"
@@ -36,6 +34,7 @@
         </androidx.cardview.widget.CardView>
 
         <LinearLayout
+            android:layout_margin="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -45,32 +44,50 @@
             <TextView
                 android:id="@+id/textView_nameCar"
                 android:layout_width="wrap_content"
-                android:layout_height="45dp"
+                android:layout_height="wrap_content"
                 android:text="KAWASAKI H2R"
                 android:textColor="#000000"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:paddingLeft="10dp"
                 />
+            <TextView
+                android:id="@+id/textView_power"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Xe tay ga "
+                android:textColor="@color/gray"
+                android:textSize="12sp"
+                android:paddingLeft="10dp"
+                />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:orientation="horizontal"
+            >
+
             <ImageView
                 android:id="@+id/imageView_brandCar"
-                android:layout_width="70dp"
+                android:layout_width="60dp"
                 android:layout_height="40dp"
-                android:src="@drawable/yamaha"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:layout_marginStart="10dp"/>
+                android:layout_centerVertical="true"
+                android:src="@drawable/helmet" />
+
             <TextView
                 android:id="@+id/textView_priceCar"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center_vertical"
                 android:text="300.000 d/ngày"
-                android:textColor="@color/black"
+                android:textColor="@color/imageBorderColor"
                 android:textSize="16sp"
-                android:layout_gravity="bottom"
-                android:textStyle="bold"
-                android:paddingLeft="20dp"
-                />
+                android:textStyle="bold" />
+        </RelativeLayout>
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

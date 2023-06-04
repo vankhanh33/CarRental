@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.greenhuecity.data.contract.HomeContract;
-import com.greenhuecity.data.model.Car;
+import com.greenhuecity.data.model.Cars;
 import com.greenhuecity.data.remote.ApiService;
 import com.greenhuecity.data.remote.RetrofitClient;
 
@@ -29,17 +29,17 @@ public class HomePresenter implements HomeContract.IPresenter {
     }
 
     @Override
-        public void getCarList(String id) {
-            apiService.getCarByBrand(id).enqueue(new Callback<List<Car>>() {
+        public void getCarList(String brands) {
+            apiService.getCarByBrand(brands).enqueue(new Callback<List<Cars>>() {
                 @Override
-                public void onResponse(Call<List<Car>> call, Response<List<Car>> response) {
-                    List<Car> mList = response.body();
+                public void onResponse(Call<List<Cars>> call, Response<List<Cars>> response) {
+                    List<Cars> mList = response.body();
                     mView.setDataRecyclerViewCar(mList);
 
                 }
 
                 @Override
-                public void onFailure(Call<List<Car>> call, Throwable t) {
+                public void onFailure(Call<List<Cars>> call, Throwable t) {
 
                 }
             });
@@ -51,7 +51,6 @@ public class HomePresenter implements HomeContract.IPresenter {
         mRunnable = new Runnable() {
             int nextPosition = 0;
             LinearLayoutManager layoutManager = ((LinearLayoutManager) recyclerView.getLayoutManager());
-
             @Override
             public void run() {
 

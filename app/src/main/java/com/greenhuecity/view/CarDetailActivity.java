@@ -13,19 +13,23 @@ import com.bumptech.glide.Glide;
 import com.greenhuecity.R;
 import com.greenhuecity.data.contract.CarDetailContract;
 import com.greenhuecity.data.database.FavoriteCarDatabaseHelper;
-import com.greenhuecity.data.model.Car;
+import com.greenhuecity.data.model.Cars;
+import com.greenhuecity.data.model.Distributors;
 import com.greenhuecity.data.presenter.CarDetailPresenter;
 
 import java.text.NumberFormat;
 import java.util.Locale;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 
 public class CarDetailActivity extends AppCompatActivity implements CarDetailContract.IView {
     ImageView img, img_heart;
-    TextView tvName, tvMaxSpeed, tvHoursPower, tvMileage, tvDescription, tvPrice;
+    CircleImageView imgDistributors;
+    TextView tvName, tvTopSpeed, tvHoursPower, tvMileage, tvDescription, tvPrice, tvDistributors;
     LinearLayout btnBooking;
     CarDetailPresenter mPresenter;
-    Car car = null;
+    Cars car = null;
     FavoriteCarDatabaseHelper db;
 
 
@@ -36,10 +40,11 @@ public class CarDetailActivity extends AppCompatActivity implements CarDetailCon
         initGUI();
 
         db = new FavoriteCarDatabaseHelper(this);
-        car = (Car) getIntent().getSerializableExtra("car");
+        car = (Cars) getIntent().getSerializableExtra("car");
         if (car != null) {
             mPresenter = new CarDetailPresenter(this,this);
             mPresenter.getDataDetailCar(car);
+            mPresenter.getDistributors(car.getDistributor_id());
         }
         if (isCheckCarFavoriteDB(car)) img_heart.setImageResource(R.drawable.favorite);
         else img_heart.setImageResource(R.drawable.heart);
@@ -53,37 +58,43 @@ public class CarDetailActivity extends AppCompatActivity implements CarDetailCon
         img = findViewById(R.id.img_detail_car);
         img_heart = findViewById(R.id.img_heart);
         tvName = findViewById(R.id.textView_nameCar);
-        tvMaxSpeed = findViewById(R.id.textView_km_h);
+        tvTopSpeed = findViewById(R.id.textView_km_h);
         tvHoursPower = findViewById(R.id.textView_ps);
         tvMileage = findViewById(R.id.textView_km_l);
         tvDescription = findViewById(R.id.textView_description);
         tvPrice = findViewById(R.id.textView_priceDetail);
         btnBooking = findViewById(R.id.button_booking);
+        imgDistributors = findViewById(R.id.imageView_distributor);
+        tvDistributors = findViewById(R.id.textView_NameDistributors);
     }
 
     @Override
-    public void setDataDetailCar(Car car) {
+    public void setDataDetailCar(Cars car) {
         Glide.with(this).load(car.getCar_img()).into(img);
         tvName.setText(car.getCar_name());
-        tvMaxSpeed.setText(car.getMax_speed());
-        tvHoursPower.setText(car.getHorsepower());
-        tvMileage.setText(car.getMileage());
-        tvDescription.setText(car.getCar_description());
+        tvTopSpeed.setText(car.getSpec_top_speed() + "");
+        tvHoursPower.setText(car.getSpec_horse_power() + "");
+        tvMileage.setText(car.getSpec_mileage()+"");
+        tvDescription.setText(car.getDescription());
         //
         Locale locale = new Locale("vi", "VN");
         NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(locale);
-        String rent_price = currencyFormatter.format(car.getRental_price()) + "/day";
+        String rent_price = currencyFormatter.format(car.getPrice()) + "/day";
         tvPrice.setText(rent_price);
 
     }
     @Override
-    public boolean isCheckCarFavoriteDB(Car car) {
-        for (Car c : db.getAllCars())
+    public boolean isCheckCarFavoriteDB(Cars car) {
+        for (Cars c : db.getAllCars())
             if (c.getCar_id() == car.getCar_id())
                 return true;
 
         return false;
     }
 
-
+    @Override
+    public void setDistributors(Distributors distributors) {
+        tvDistributors.setText(distributors.getName());
+        Glide.with(this).load(distributors.getPhoto()).into(imgDistributors);
+    }
 }
