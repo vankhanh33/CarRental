@@ -42,7 +42,7 @@
             android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".SettingsActivity"
+            android:name=".SearchActivity"
             android:exported="true"
             android:screenOrientation="portrait" />
         <activity

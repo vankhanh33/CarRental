@@ -11,9 +11,12 @@ public interface FavoriteContract {
         void setDataRecyclerViewCar(List<Cars> mList);
         void setDataEmpty(String mess);
         void setDataExist();
+        void searchTextChangedListener(List<Cars> carsList);
+        void getCarsList(List<Cars> carsList);
     }
     interface IPresenter{
         void getCarList(Context context);
-
+        void getCarListAPI();
+        List<Cars> filterCarList(String searchText,List<Cars> carsList);
     }
 }

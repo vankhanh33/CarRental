@@ -5,13 +5,14 @@ import android.os.Handler;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.greenhuecity.data.contract.CarContract;
 import com.greenhuecity.data.contract.HomeContract;
 import com.greenhuecity.data.model.Cars;
 import com.greenhuecity.data.remote.ApiService;
 import com.greenhuecity.data.remote.RetrofitClient;
 
+import java.util.ArrayList;
 import java.util.List;
-
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -20,8 +21,6 @@ import retrofit2.Response;
 public class HomePresenter implements HomeContract.IPresenter {
     HomeContract.IView mView;
     ApiService apiService;
-    private Handler mHandler;
-    private Runnable mRunnable;
 
     public HomePresenter(HomeContract.IView mView) {
         this.mView = mView;
@@ -29,51 +28,30 @@ public class HomePresenter implements HomeContract.IPresenter {
     }
 
     @Override
-        public void getCarList(String brands) {
-            apiService.getCarByBrand(brands).enqueue(new Callback<List<Cars>>() {
-                @Override
-                public void onResponse(Call<List<Cars>> call, Response<List<Cars>> response) {
-                    List<Cars> mList = response.body();
-                    mView.setDataRecyclerViewCar(mList);
-
-                }
-
-                @Override
-                public void onFailure(Call<List<Cars>> call, Throwable t) {
-
-                }
-            });
-        }
-
-    @Override
-    public void startAutoScroll(RecyclerView recyclerView) {
-        mHandler = new Handler();
-        mRunnable = new Runnable() {
-            int nextPosition = 0;
-            LinearLayoutManager layoutManager = ((LinearLayoutManager) recyclerView.getLayoutManager());
+    public void getCarList() {
+        apiService.getCarByBrand("").enqueue(new Callback<List<Cars>>() {
             @Override
-            public void run() {
-
-                int lastVisible = layoutManager.findLastCompletelyVisibleItemPosition();
-                if (nextPosition < recyclerView.getAdapter().getItemCount()) {
-                    if (lastVisible < recyclerView.getAdapter().getItemCount() - 1) {
-                        nextPosition = lastVisible + 1;
-                    } else {
-                        nextPosition = 0;
-                    }
-                }
-                layoutManager.smoothScrollToPosition(recyclerView, new RecyclerView.State(), nextPosition);
-                mHandler.postDelayed(this, 6000);
+            public void onResponse(Call<List<Cars>> call, Response<List<Cars>> response) {
+                List<Cars> mList = response.body();
+                mView.getCarsList(mList);
             }
-        };
-        mHandler.postDelayed(mRunnable,6000);
+
+            @Override
+            public void onFailure(Call<List<Cars>> call, Throwable t) {
+
+            }
+        });
     }
 
     @Override
-    public void stopAutoScroll() {
-        if (mHandler != null && mRunnable != null) {
-            mHandler.removeCallbacks(mRunnable);
+    public List<Cars> filterCarList(String searchText, List<Cars> carsList) {
+        List<Cars> filteredList = new ArrayList<>();
+        for (Cars car : carsList) {
+            if (car.getCar_name().toLowerCase().contains(searchText)
+                    || car.getBrand_name().toLowerCase().contains(searchText)) {
+                filteredList.add(car);
+            }
         }
+        return filteredList;
     }
-
 }

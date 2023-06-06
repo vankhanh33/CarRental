@@ -23,6 +23,17 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" >
+            <TextView
+                android:id="@+id/status"
+                android:paddingLeft="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:text="Free time"
+                android:alpha="0.5"
+                android:textColor="@color/blue"
+                android:textSize="16sp"
+                />
             <ImageView
                 android:id="@+id/imageView_car"
                 android:layout_width="220dp"
@@ -84,7 +95,7 @@
                 android:layout_marginBottom="10dp"
                 android:gravity="center_vertical"
                 android:text="300.000 d/ngày"
-                android:textColor="@color/imageBorderColor"
+                android:textColor="@color/blue"
                 android:textSize="16sp"
                 android:textStyle="bold" />
         </RelativeLayout>

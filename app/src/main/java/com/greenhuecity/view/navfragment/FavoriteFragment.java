@@ -1,9 +1,18 @@
 package com.greenhuecity.view.navfragment;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,35 +21,60 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.textfield.TextInputLayout;
 import com.greenhuecity.R;
+import com.greenhuecity.SearchActivity;
 import com.greenhuecity.data.contract.FavoriteContract;
 import com.greenhuecity.data.model.Cars;
 import com.greenhuecity.data.presenter.FavoritePresenter;
+import com.greenhuecity.data.presenter.HomePresenter;
 import com.greenhuecity.view.adapter.CarRecyclerViewAdapter;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class FavoriteFragment extends Fragment implements FavoriteContract.IView {
     TextView tvEmpty;
     RecyclerView rvCar;
     FavoritePresenter mPresenter;
+    View view;
+    TextInputLayout inputLayout;
+    AutoCompleteTextView completeTextView;
+    ImageButton btnSearch;
+    List<Cars> carsList;
+    String textSearch = "";
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_favorite,container,false);
-        tvEmpty = view.findViewById(R.id.textView_favoriteNull);
-        rvCar  = view.findViewById(R.id.recyclerView_car);
+        view = inflater.inflate(R.layout.fragment_favorite, container, false);
+        initGUI();
         rvCar.setHasFixedSize(true);
-        rvCar.setLayoutManager(new GridLayoutManager(requireContext(),2));
-        mPresenter = new FavoritePresenter(this,requireContext());
+        rvCar.setLayoutManager(new GridLayoutManager(requireContext(), 2));
+        mPresenter = new FavoritePresenter(this, requireContext());
         mPresenter.getCarList(requireContext());
+        mPresenter.getCarListAPI();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (carsList != null) changeTextSearch();
+            }
+        }, 2000);
         return view;
+    }
+
+    private void initGUI() {
+        tvEmpty = view.findViewById(R.id.textView_favoriteNull);
+        rvCar = view.findViewById(R.id.recyclerView_car);
+        inputLayout = view.findViewById(R.id.textInputLayout);
+        completeTextView = view.findViewById(R.id.autoCompleteText_search);
+        btnSearch = view.findViewById(R.id.imageButton_search);
     }
 
     @Override
     public void setDataRecyclerViewCar(List<Cars> mList) {
-        CarRecyclerViewAdapter adapter = new CarRecyclerViewAdapter(mList,requireContext());
+        CarRecyclerViewAdapter adapter = new CarRecyclerViewAdapter(mList, requireContext());
         rvCar.setAdapter(adapter);
         adapter.notifyDataSetChanged();
 
@@ -61,5 +95,70 @@ public class FavoriteFragment extends Fragment implements FavoriteContract.IView
     public void onResume() {
         super.onResume();
         mPresenter.getCarList(requireContext());
+    }
+
+
+    private void changeTextSearch() {
+        List<String> suggestSearchResults = new ArrayList<>();
+        for (Cars cars : carsList) {
+            suggestSearchResults.add(cars.getCar_name());
+        }
+        ArrayAdapter adapter = new ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, suggestSearchResults);
+        completeTextView.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                inputLayout.setHintEnabled(false);
+                completeTextView.setAdapter(adapter);
+                textSearch = s.toString().toLowerCase();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+    }
+
+
+    @Override
+    public void searchTextChangedListener(List<Cars> carsList) {
+        completeTextView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_SEARCH || actionId == EditorInfo.IME_ACTION_DONE
+                        || event.getAction() == KeyEvent.ACTION_DOWN || event.getAction() == KeyEvent.KEYCODE_ENTER) {
+                    intentSearch(carsList);
+                    return true;
+                }
+                return false;
+            }
+        });
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intentSearch(carsList);
+            }
+        });
+    }
+
+    @Override
+    public void getCarsList(List<Cars> carsList) {
+        this.carsList = carsList;
+        if (carsList != null && textSearch != null) searchTextChangedListener(carsList);
+
+    }
+
+    void intentSearch(List<Cars> carsList) {
+        List<Cars> searchList = mPresenter.filterCarList(textSearch, carsList);
+        if (searchList != null) {
+            Intent intent = new Intent(requireContext(), SearchActivity.class);
+            intent.putExtra("list", (Serializable) searchList);
+            startActivity(new Intent(intent));
+        }
     }
 }

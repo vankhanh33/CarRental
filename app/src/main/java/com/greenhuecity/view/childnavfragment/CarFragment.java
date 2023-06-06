@@ -15,16 +15,16 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.greenhuecity.R;
-import com.greenhuecity.data.contract.HomeContract;
+import com.greenhuecity.data.contract.CarContract;
 import com.greenhuecity.data.model.Cars;
-import com.greenhuecity.data.presenter.HomePresenter;
+import com.greenhuecity.data.presenter.CarPresenter;
 import com.greenhuecity.view.adapter.CarRecyclerViewAdapter;
 
 import java.util.List;
 
-public class CarFragment extends Fragment implements HomeContract.IView {
+public class CarFragment extends Fragment implements CarContract.IView {
     RecyclerView rvCar;
-    HomePresenter brandPresenter;
+    CarPresenter brandPresenter;
 
 
     CarRecyclerViewAdapter mAdapter;
@@ -49,8 +49,9 @@ public class CarFragment extends Fragment implements HomeContract.IView {
         rvCar.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
 
 
-        brandPresenter = new HomePresenter(this);
+        brandPresenter = new CarPresenter(this);
         brandPresenter.getCarList(brands);
+
 
         return view;
     }
@@ -74,5 +75,6 @@ public class CarFragment extends Fragment implements HomeContract.IView {
         brandPresenter.startAutoScroll(rvCar);
 
     }
+
 
 }

@@ -4,61 +4,75 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:scrollbars="none"
-  >
+    android:scrollbars="none">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:paddingTop="20dp"
-            android:paddingBottom="20dp"
             android:orientation="horizontal"
-            android:paddingStart="10dp">
+            android:paddingStart="10dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp">
 
-            <TextView
+            <LinearLayout
                 android:layout_width="300dp"
                 android:layout_height="50dp"
                 android:layout_margin="10dp"
-                android:background="@drawable/border_search"
-                android:backgroundTint="#7ADDDDDD"
-                android:drawableStart="@drawable/location"
-                android:drawableEnd="@drawable/my_location"
-                android:drawablePadding="10dp"
-                android:text="Huế"
-                android:gravity="center_vertical"
-                android:textSize="20sp"
                 android:textStyle="bold"
-                android:textColor="@color/black"
-                android:padding="10dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                app:cardCornerRadius="30dp"
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/background_properties"
+                    android:padding="10dp"
+                    android:src="@drawable/location"
+                    app:tint="#676565" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="Vị trí của bạn"
+                        android:textColor="#676565"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="Huế"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/img_logo"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:layout_marginRight="20dp"
+                android:src="@drawable/em_quynh"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginEnd="10dp">
-                <ImageView
-                    android:id="@+id/img_logo"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:scaleType="fitXY"
-                    android:padding="5dp"
-                    android:src="@drawable/em_quynh"
-                    android:layout_gravity="center"
-                    />
-            </androidx.cardview.widget.CardView>
-
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
         <TextView
             android:id="@+id/b_n_ang_t_m"
             android:layout_width="250dp"
@@ -104,11 +118,10 @@
                 <AutoCompleteTextView
                     android:id="@+id/autoCompleteText_search"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:background="@drawable/border_search"
                     android:elevation="2dp"
-
                     android:imeOptions="actionSearch"
                     android:inputType="text"
                     android:maxLines="1"
@@ -151,7 +164,7 @@
             android:id="@+id/viewpager2_car"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"/>
+            android:layout_margin="10dp" />
 
         <TextView
             android:id="@+id/textView_accessory"

@@ -8,11 +8,12 @@ import java.util.List;
 
 public interface HomeContract {
     interface IView{
-        void setDataRecyclerViewCar(List<Cars> mList);
+
+        void searchTextChangedListener(List<Cars> carsList);
+        void getCarsList(List<Cars> carsList);
     }
     interface IPresenter{
-        void getCarList(String brand);
-        void startAutoScroll(final RecyclerView recyclerView);
-        void stopAutoScroll();
+        void getCarList();
+        List<Cars> filterCarList(String searchText,List<Cars> carsList);
     }
 }

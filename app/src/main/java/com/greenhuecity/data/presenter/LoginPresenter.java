@@ -52,7 +52,7 @@ public class LoginPresenter implements LoginContract.IPresenter {
                                 Gson gson = new Gson();
                                 String user = gson.toJson(mList.get(i));
                                 SharedPreferences.Editor editor = context.getSharedPreferences("Success", MODE_PRIVATE).edit();
-                                editor.putString("users", user);
+                                    editor.putString("users", user);
                                 editor.apply();
                                 //dialog success and intent MainActivity
                                 mView.showSuccessMessage("Chào mừng đến với ứng dụng của chúng tôi!");
