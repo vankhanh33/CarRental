@@ -1,31 +1,57 @@
 package com.greenhuecity.data.contract;
 
+import android.widget.TextView;
+
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
+import com.greenhuecity.data.model.CarDistributor;
 import com.greenhuecity.data.model.Cars;
+import com.greenhuecity.data.model.Orders;
+
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Random;
 
 public interface RentCarConstract {
     interface IView {
-        void initGUI();
+        void setCurrentDate(Calendar mCalendar);
 
-        void setDataTvRental();
+        void setOrderInfo(CarDistributor carDistributor);
 
-        void setCarInfo(Cars car);
-
-        void showDistance(String formattedDistance);
+        void setDistance(String formattedDistance);
 
         void setAddress(String addressLine);
+
+        void setEventSelectDay();
+
+        void setTotalRent(int date);
+
+        void notifiErrorDate(String mess);
+        void successOrders(String mess);
+
     }
 
     interface IPresenter {
-        void getCar(Cars car);
+        void getCarDistributor(CarDistributor carDistributor);
 
-        void onMapReady(GoogleMap googleMap, Cars car);
-
-        void drawRoute(GoogleMap googleMap, LatLng origin, LatLng destination);
+        void onMapReady(GoogleMap googleMap, CarDistributor carDistributor);
 
         void getAddressFromLatLng(LatLng latLng);
 
-        void upRentCar(Cars car, String date_start, String date_end, int price);
+        String distanceToDistributor(LatLng origin, LatLng destination);
+
+        void getDayTime(Calendar calendar, CarDistributor carDistributor, TextView tv, Date startDate, Date endDate, int item);
+
+        void getCurrentDate(Calendar calendar);
+
+        String generateRandomString();
+
+        int getUsersId();
+
+        void upOrders(String cod, String from_time, String end_time);
+
+        void upOrderItems(int car_id, int order_id, double price);
+        void loadOrderProcessing(String from_time,String end_time,double price,int car_id);
+
     }
 }

@@ -69,7 +69,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_height="230dp"
                 android:layout_margin="20dp"
                 android:gravity="center">
 
@@ -77,10 +77,21 @@
                     android:id="@+id/img_detail_car"
                     android:layout_width="300dp"
                     android:layout_height="210dp"
-
                     android:src="@drawable/img_car" />
-            </LinearLayout>
 
+            </LinearLayout>
+            <TextView
+                android:id="@+id/status"
+                android:gravity="end"
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+               android:layout_marginRight="20dp"
+                android:text="Free time"
+                android:alpha="0.5"
+                android:textColor="@color/blue"
+                android:textSize="20sp"
+               />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -88,14 +99,14 @@
                 android:elevation="4dp"
                 android:orientation="vertical"
                 android:paddingLeft="20dp"
-                android:paddingTop="20dp"
+                android:paddingTop="10dp"
                 android:paddingRight="20dp"
                 android:paddingBottom="90dp">
 
-                <TextView
+                <View
                     android:id="@+id/rectangle_4"
                     android:layout_width="58dp"
-                    android:layout_height="8dp"
+                    android:layout_height="6dp"
                     android:layout_gravity="center_horizontal"
                     android:background="@drawable/background_textview_rent"
                     android:backgroundTint="@color/gray" />
@@ -141,11 +152,59 @@
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
                         android:paddingLeft="10dp"
-                        android:text="[100+ Reviews]"
+                        android:text="[100+ Đánh giá]"
                         android:textColor="#c1c1c1"
                         android:textSize="15sp" />
                 </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp">
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="10dp"
+                        android:text="Thời gian:"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+                  <RelativeLayout
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:paddingLeft="10dp">
+                      <TextView
+                          android:id="@+id/textView_timeRentStart"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:gravity="center_vertical"
+                          android:text="2023-06-07 12:23:12"
+                          android:paddingLeft="10dp"
+                          android:textColor="#F10629"
+                          android:textSize="15sp" />
+                      <TextView
+                          android:id="@+id/text"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:gravity="center_vertical"
+                          android:text=" - "
+
+                          android:layout_below="@+id/textView_timeRentStart"
+                          android:textColor="@color/black"
+                          android:textSize="15sp" />
+                      <TextView
+                          android:id="@+id/textView_timeRentEnd"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:gravity="center_vertical"
+                          android:text="2023-06-07 12:23:12"
+                          android:textColor="#DA0707"
+                          android:textSize="15sp"
+
+                          android:layout_toRightOf="@+id/text"
+                          android:layout_below="@id/textView_timeRentStart"/>
+                  </RelativeLayout>
+                </LinearLayout>
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -163,7 +222,7 @@
                         android:id="@+id/imageView_distributor"
                         android:layout_width="50dp"
                         android:layout_height="match_parent"
-                        android:src="@drawable/user_dp" />
+                        android:src="@drawable/logo_carr" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -176,7 +235,7 @@
                             android:id="@+id/textView_NameDistributors"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Hữu Long Media"
+                            android:text="Car Rental Company"
                             android:textColor="#000000"
                             android:textSize="16sp"
                             android:textStyle="bold" />
@@ -199,16 +258,19 @@
                             android:layout_height="match_parent"
                             android:layout_marginRight="10dp"
                             android:background="@drawable/background_properties">
+
                             <ImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:padding="10dp"
                                 android:src="@drawable/messenger" />
                         </LinearLayout>
+
                         <LinearLayout
                             android:layout_width="50dp"
                             android:layout_height="match_parent"
                             android:background="@drawable/background_properties">
+
                             <ImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
@@ -217,7 +279,6 @@
                         </LinearLayout>
                     </LinearLayout>
                 </RelativeLayout>
-
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -225,11 +286,12 @@
                     android:alpha="0.4"
                     android:background="@color/gray" />
 
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Car Specs"
+                    android:text="Thông số kỹ thuật"
                     android:textColor="#000000"
                     android:textSize="22sp"
                     android:textStyle="bold" />
@@ -397,7 +459,7 @@ viverra maecenas accumsan lacus vel facilisis. "
             android:layout_height="match_parent"
             android:elevation="4dp"
             android:gravity="center_vertical"
-            android:text="Booking "
+            android:text="Đặt xe"
             android:textColor="#ffffff"
             android:textSize="20sp"
             android:textStyle="bold" />

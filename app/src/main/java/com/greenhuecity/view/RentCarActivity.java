@@ -1,66 +1,84 @@
 package com.greenhuecity.view;
 
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
+
+import android.content.DialogInterface;
 import android.location.LocationManager;
 import android.os.Bundle;
 
-import android.util.Log;
+import android.os.Handler;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 
-
-import com.greenhuecity.MainActivity;
 import com.greenhuecity.R;
 import com.greenhuecity.data.contract.RentCarConstract;
-import com.greenhuecity.data.model.Cars;
+import com.greenhuecity.data.model.CarDistributor;
+import com.greenhuecity.data.model.Orders;
 import com.greenhuecity.data.presenter.RentCarPresenter;
-import com.greenhuecity.data.remote.OnBottomSheetListener;
 
 
+import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 
-public class RentCarActivity extends AppCompatActivity implements OnMapReadyCallback, OnBottomSheetListener, RentCarConstract.IView {
-    TextView tvName, tvBrand, tvDeparture_day, tvReturn_day, tvDistance, tvLocation, tvMomo;
+
+public class RentCarActivity extends AppCompatActivity implements OnMapReadyCallback, RentCarConstract.IView {
+    TextView tvName, tvBrand, tvDeparture_day, tvReturn_day, tvDistance, tvLocation, tvPay, tvDistributors, textView_priceDetail, tvStartTimeCar, tvEndTimeEnd;
+    ImageView imgCalendarStar, imgCalendarEnd;
+    CircleImageView igDistributors;
     LinearLayout layoutPay;
-    private GoogleMap mMap;
+    double latitude, longitude, price;
     private LocationManager locationManager;
-
-    Cars car;
+    CarDistributor carDist;
     RentCarPresenter mPresenter;
-    String start_date,end_date;
+    Calendar calendar;
+    Date startDate = null;
+    Date endDate = null;
+    SimpleDateFormat dateFormat;
+    NumberFormat currencyFormatter;
 
+    int nbDays = 1;
 
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order);
+        Locale locale = new Locale("vi", "VN");
+        currencyFormatter = NumberFormat.getCurrencyInstance(locale);
+        dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        calendar = Calendar.getInstance();
         initGUI();
-        car = (Cars) getIntent().getSerializableExtra("car");
+        carDist = (CarDistributor) getIntent().getSerializableExtra("cars-distributors");
+        textView_priceDetail.setText(currencyFormatter.format(carDist.getCars().getPrice()) + "/ngày");
+
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         // Khởi tạo LocationManager
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-
         mPresenter = new RentCarPresenter(this, RentCarActivity.this, locationManager);
-        mPresenter.getCar(car);
+        mPresenter.getCurrentDate(calendar);
+        mPresenter.getCarDistributor(carDist);
         mapFragment.getMapAsync(this);
-        setDataTvRental();
-        listener();
-
+        setEventSelectDay();
+        eventButtonOrders();
     }
 
     public void initGUI() {
@@ -68,96 +86,136 @@ public class RentCarActivity extends AppCompatActivity implements OnMapReadyCall
         tvBrand = findViewById(R.id.textView_brand);
         tvDeparture_day = findViewById(R.id.textView_start);
         tvReturn_day = findViewById(R.id.textView_end);
+        imgCalendarStar = findViewById(R.id.calendar_star);
+        imgCalendarEnd = findViewById(R.id.calendar_end);
+        igDistributors = findViewById(R.id.imageView_distributor);
+        tvDistributors = findViewById(R.id.textView_NameDistributors);
         tvLocation = findViewById(R.id.textView_pickup_location);
-        tvMomo = findViewById(R.id.textView_momo);
+        tvPay = findViewById(R.id.textView_momo);
         layoutPay = findViewById(R.id.button_paynow);
         tvDistance = findViewById(R.id.textView_distance);
+        textView_priceDetail = findViewById(R.id.textView_priceDetail);
+        tvStartTimeCar = findViewById(R.id.textView_timeRentStart);
+        tvEndTimeEnd = findViewById(R.id.textView_timeRentEnd);
+        //khởi tạo các Calendar
+
     }
-    private  void listener(){
+
+    void eventButtonOrders() {
         layoutPay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                start_date = tvDeparture_day.getText().toString();
-                end_date = tvReturn_day.getText().toString();
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
-                try {
-                    // Chuyển đổi chuỗi ngày thành đối tượng Date
-                    Date startDate = sdf.parse(start_date);
-                    Date endDate = sdf.parse(end_date);
-
-                    // Tính toán khoảng cách giữa hai đối tượng Date
-                    long diffInMillis = endDate.getTime() - startDate.getTime();
-                    int diffInDays = (int) (diffInMillis / (24 * 60 * 60 * 1000));
-                    mPresenter.upRentCar(car,start_date,end_date,(int) car.getPrice() * diffInDays);
-                    startActivity(new Intent(RentCarActivity.this, MainActivity.class));
-                } catch (ParseException e) {
-                    // Xử lý ngoại lệ khi không thể chuyển đổi chuỗi ngày thành đối tượng Date
-                    Log.d("AAA", "Error");
-                }
+                String from_time = tvDeparture_day.getText().toString();
+                String end_time = tvReturn_day.getText().toString();
+                double price = nbDays * carDist.getCars().getPrice();
+                mPresenter.loadOrderProcessing(from_time,end_time,price,carDist.getCars().getCar_id());
             }
         });
-    }
-    @Override
-    public void setDataTvRental() {
-        Calendar calendar = Calendar.getInstance();
-        calendar.add(Calendar.DATE, 1);
-        Date date = calendar.getTime();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
-        String formattedDate = sdf.format(date);
-        tvDeparture_day.setText(sdf.format(new Date()));
-        tvReturn_day.setText(formattedDate);
-        tvDeparture_day.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ChooseDayBottomSheetFragment bottomSheetFragment = ChooseDayBottomSheetFragment.newInstance("start", tvReturn_day.getText().toString());
-                bottomSheetFragment.mListener = (OnBottomSheetListener) RentCarActivity.this;
-                bottomSheetFragment.show(getSupportFragmentManager(), bottomSheetFragment.getTag());
-
-            }
-        });
-        tvReturn_day.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ChooseDayBottomSheetFragment bottomSheetFragment = ChooseDayBottomSheetFragment.newInstance("end", tvDeparture_day.getText().toString());
-                bottomSheetFragment.mListener = (OnBottomSheetListener) RentCarActivity.this;
-                bottomSheetFragment.show(getSupportFragmentManager(), bottomSheetFragment.getTag());
-
-            }
-        });
-
     }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
-        mPresenter.onMapReady(googleMap, car);
+        mPresenter.onMapReady(googleMap, carDist);
     }
 
 
-
     @Override
-    public void setCarInfo(Cars car) {
-        tvName.setText(car.getCar_name());
-        tvBrand.setText(car.getBrand_id());
+    public void setCurrentDate(Calendar mCalendar) {
+        Date currentDate = mCalendar.getTime();
+        mCalendar.add(Calendar.DATE, 1);
+        Date nextDate = mCalendar.getTime();
+        tvDeparture_day.setText(dateFormat.format(currentDate));
+        tvReturn_day.setText(dateFormat.format(nextDate));
     }
 
     @Override
-    public void showDistance(String formattedDistance) {
+    public void setOrderInfo(CarDistributor carDistributor) {
+        tvName.setText(carDistributor.getCars().getCar_name());
+        tvBrand.setText(carDistributor.getCars().getBrand_name());
+        tvDistributors.setText(carDistributor.getDistributors().getName());
+        Glide.with(this).load(carDistributor.getDistributors().getPhoto()).into(igDistributors);
+        latitude = carDistributor.getDistributors().getLatitude();
+        longitude = carDistributor.getDistributors().getLongitude();
+        price = carDistributor.getCars().getPrice();
+        tvStartTimeCar.setText(String.valueOf(carDistributor.getCars().getFrom_time()));
+        tvEndTimeEnd.setText(String.valueOf(carDistributor.getCars().getEnd_time()));
+    }
+
+    @Override
+    public void setDistance(String formattedDistance) {
         tvDistance.setText(formattedDistance);
     }
 
     @Override
-    public void setAddress(String addressLine) {
-        tvLocation.setText(addressLine);
+    public void setAddress(String address) {
+        tvLocation.setText(address);
+    }
+
+    @Override
+    public void setEventSelectDay() {
+        imgCalendarStar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    startDate = dateFormat.parse(tvDeparture_day.getText().toString());
+                    endDate = dateFormat.parse(tvReturn_day.getText().toString());
+                    mPresenter.getDayTime(calendar, carDist, tvDeparture_day, startDate, endDate, 0);
+
+                } catch (ParseException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+        imgCalendarEnd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    startDate = dateFormat.parse(tvDeparture_day.getText().toString());
+                    endDate = dateFormat.parse(tvReturn_day.getText().toString());
+                    mPresenter.getDayTime(calendar, carDist, tvReturn_day, startDate, endDate, 1);
+                } catch (ParseException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+    }
+
+    @Override
+    public void setTotalRent(int date) {
+        nbDays = date;
+        textView_priceDetail.setText(currencyFormatter.format((nbDays * carDist.getCars().getPrice())) + "/" + nbDays + "ngày");
+    }
+
+    @Override
+    public void notifiErrorDate(String mess) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Lỗi!");
+        builder.setMessage(mess);
+        AlertDialog dialog = builder.create();
+        dialog.show();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                dialog.dismiss();
+            }
+        }, 2000);
     }
 
 
     @Override
-    public void onResult(String result, String isCheck) {
-        if (result != null) {
-            if (isCheck.equals("start")) {
-                tvDeparture_day.setText(result);
-            } else if (isCheck.equals("end")) tvReturn_day.setText(result);
-        }
+    public void successOrders(String mess) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Đặt xe thành công!");
+        builder.setMessage(mess);
+        AlertDialog dialog = builder.create();
+        dialog.show();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                dialog.dismiss();
+            }
+        }, 2000);
     }
+
+
 }

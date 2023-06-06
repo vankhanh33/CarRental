@@ -1,7 +1,10 @@
 package com.greenhuecity.util;
 
+import com.greenhuecity.data.model.Cars;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 public class Utils {
     public static String sha256(String passphrase) {

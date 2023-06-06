@@ -1,6 +1,8 @@
 package com.greenhuecity.data.model;
 
-public class Distributors {
+import java.io.Serializable;
+
+public class Distributors implements Serializable {
     int id;
     String code, name,photo,address,description;
     double latitude,longitude;

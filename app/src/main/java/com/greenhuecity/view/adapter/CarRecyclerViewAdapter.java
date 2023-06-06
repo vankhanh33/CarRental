@@ -48,13 +48,14 @@ public class CarRecyclerViewAdapter extends RecyclerView.Adapter<CarRecyclerView
         NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(locale);
         holder.tvPrice.setText(currencyFormatter.format(car.getPrice()) + "/ ngày");
         holder.tvPower.setText(car.getPower_name());
+        holder.tvStatus.setText(car.getStatus());
         Glide.with(mContext).load(car.getBrand_img()).into(holder.imgBrand);
         holder.imgCar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, CarDetailActivity.class);
-                 intent.putExtra("car",car);
-                 mContext.startActivity(intent);
+                intent.putExtra("car", car);
+                mContext.startActivity(intent);
             }
         });
 
@@ -62,12 +63,12 @@ public class CarRecyclerViewAdapter extends RecyclerView.Adapter<CarRecyclerView
 
     @Override
     public int getItemCount() {
-       if(mList != null)  return mList.size();
-       else return 0;
+        if (mList != null) return mList.size();
+        else return 0;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView tvName, tvPrice, tvPower;
+        private TextView tvName, tvPrice, tvPower, tvStatus;
         private ImageView imgCar, imgBrand;
 
         public ViewHolder(@NonNull View itemView) {
@@ -78,6 +79,7 @@ public class CarRecyclerViewAdapter extends RecyclerView.Adapter<CarRecyclerView
             tvName = itemView.findViewById(R.id.textView_nameCar);
             tvPrice = itemView.findViewById(R.id.textView_priceCar);
             tvPower = itemView.findViewById(R.id.textView_power);
+            tvStatus = itemView.findViewById(R.id.status);
         }
     }
 }

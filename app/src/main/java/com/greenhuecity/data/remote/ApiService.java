@@ -2,6 +2,8 @@ package com.greenhuecity.data.remote;
 
 import com.greenhuecity.data.model.Cars;
 import com.greenhuecity.data.model.Distributors;
+import com.greenhuecity.data.model.OrderItems;
+import com.greenhuecity.data.model.Orders;
 import com.greenhuecity.data.model.Users;
 
 import java.util.List;
@@ -20,16 +22,6 @@ public interface ApiService {
     @FormUrlEncoded
     Call<List<Cars>> getCarByBrand(@Field("brands") String brands);
 
-    @POST("book-rental-car.php")
-    @FormUrlEncoded
-    Call<Cars> upRentCar(@Field("car_id") int car_id,
-                         @Field("users_id") int users_id,
-                         @Field("rental_start_date") String rental_start_date,
-                         @Field("rental_end_date") String rental_end_date,
-                         @Field("price") int price,
-                         @Field("status") String status,
-                         @Field("payment_status") String payment_status);
-
     //Lấy danh sách user
     @GET("arr-users.php")
     Call<List<Users>> getUsers();
@@ -45,4 +37,21 @@ public interface ApiService {
     @POST("distributors-id.php")
     @FormUrlEncoded
     Call<List<Distributors>> getDistributors(@Field("id") int id);
+    //Xử lí đặt hàng
+    @POST("up-orders.php")
+    @FormUrlEncoded
+    Call<Orders> upOrders(@Field("code") String code,
+                           @Field("from_time") String from_time,
+                           @Field("end_time") String end_time,
+                           @Field("users_id") int users_id);
+    @POST("orders-code.php")
+    @FormUrlEncoded
+    Call<List<Orders>> getOrders(@Field("cod") String cod);
+    @POST("up-order-items.php")
+    @FormUrlEncoded
+    Call<OrderItems> upOrderItems(@Field("car_id") int car_id,
+                                  @Field("order_id") int order_id,
+                                  @Field("price") double price);
+
+
 }

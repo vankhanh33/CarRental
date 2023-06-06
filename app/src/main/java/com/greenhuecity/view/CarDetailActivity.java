@@ -2,9 +2,11 @@ package com.greenhuecity.view;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,6 +15,7 @@ import com.bumptech.glide.Glide;
 import com.greenhuecity.R;
 import com.greenhuecity.data.contract.CarDetailContract;
 import com.greenhuecity.data.database.FavoriteCarDatabaseHelper;
+import com.greenhuecity.data.model.CarDistributor;
 import com.greenhuecity.data.model.Cars;
 import com.greenhuecity.data.model.Distributors;
 import com.greenhuecity.data.presenter.CarDetailPresenter;
@@ -26,10 +29,11 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class CarDetailActivity extends AppCompatActivity implements CarDetailContract.IView {
     ImageView img, img_heart;
     CircleImageView imgDistributors;
-    TextView tvName, tvTopSpeed, tvHoursPower, tvMileage, tvDescription, tvPrice, tvDistributors;
+    TextView tvName, tvTopSpeed, tvHoursPower, tvMileage, tvDescription, tvPrice, tvDistributors,tvTimeStart,tvTimeEnd,tvStatus;
     LinearLayout btnBooking;
     CarDetailPresenter mPresenter;
     Cars car = null;
+    Distributors dist = null;
     FavoriteCarDatabaseHelper db;
 
 
@@ -42,16 +46,25 @@ public class CarDetailActivity extends AppCompatActivity implements CarDetailCon
         db = new FavoriteCarDatabaseHelper(this);
         car = (Cars) getIntent().getSerializableExtra("car");
         if (car != null) {
-            mPresenter = new CarDetailPresenter(this,this);
+            mPresenter = new CarDetailPresenter(this, this);
             mPresenter.getDataDetailCar(car);
             mPresenter.getDistributors(car.getDistributor_id());
         }
         if (isCheckCarFavoriteDB(car)) img_heart.setImageResource(R.drawable.favorite);
         else img_heart.setImageResource(R.drawable.heart);
         img_heart.setOnClickListener(view -> mPresenter.updateDataFavorite(car, img_heart));
-        Intent intent = new Intent(this, RentCarActivity.class);
-        intent.putExtra("car",car);
-        btnBooking.setOnClickListener(view-> startActivity(intent));
+
+        btnBooking.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CarDetailActivity.this, RentCarActivity.class);
+                CarDistributor carDistributor = new CarDistributor(car, dist);
+                if (car != null && dist != null) {
+                    intent.putExtra("cars-distributors", carDistributor);
+                    startActivity(intent);
+                }
+            }
+        });
     }
 
     private void initGUI() {
@@ -66,6 +79,9 @@ public class CarDetailActivity extends AppCompatActivity implements CarDetailCon
         btnBooking = findViewById(R.id.button_booking);
         imgDistributors = findViewById(R.id.imageView_distributor);
         tvDistributors = findViewById(R.id.textView_NameDistributors);
+        tvTimeEnd = findViewById(R.id.textView_timeRentEnd);
+        tvTimeStart = findViewById(R.id.textView_timeRentStart);
+        tvStatus = findViewById(R.id.status);
     }
 
     @Override
@@ -74,15 +90,19 @@ public class CarDetailActivity extends AppCompatActivity implements CarDetailCon
         tvName.setText(car.getCar_name());
         tvTopSpeed.setText(car.getSpec_top_speed() + "");
         tvHoursPower.setText(car.getSpec_horse_power() + "");
-        tvMileage.setText(car.getSpec_mileage()+"");
+        tvMileage.setText(car.getSpec_mileage() + "");
         tvDescription.setText(car.getDescription());
         //
         Locale locale = new Locale("vi", "VN");
         NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(locale);
         String rent_price = currencyFormatter.format(car.getPrice()) + "/day";
         tvPrice.setText(rent_price);
+        tvTimeStart.setText(String.valueOf(car.getFrom_time()));
+        tvTimeEnd.setText(String.valueOf(car.getEnd_time()));
+        tvStatus.setText(car.getStatus());
 
     }
+
     @Override
     public boolean isCheckCarFavoriteDB(Cars car) {
         for (Cars c : db.getAllCars())
@@ -94,7 +114,8 @@ public class CarDetailActivity extends AppCompatActivity implements CarDetailCon
 
     @Override
     public void setDistributors(Distributors distributors) {
-        tvDistributors.setText(distributors.getName());
-        Glide.with(this).load(distributors.getPhoto()).into(imgDistributors);
+        dist = distributors;
+        tvDistributors.setText(dist.getName());
+        Glide.with(this).load(dist.getPhoto()).into(imgDistributors);
     }
 }
