@@ -1,8 +1,6 @@
-package com.greenhuecity.view.fragmentlogin;
+package com.greenhuecity.view.fragment.login;
 
 import android.app.AlertDialog;
-import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -18,11 +16,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.greenhuecity.MainActivity;
+import com.greenhuecity.view.activity.MainActivity;
 import com.greenhuecity.R;
 import com.greenhuecity.data.contract.LoginContract;
 import com.greenhuecity.data.presenter.LoginPresenter;
-import com.greenhuecity.view.LoginActivity;
+import com.greenhuecity.view.activity.LoginActivity;
 
 public class LoginFragment extends Fragment implements LoginContract.IView {
     View view;

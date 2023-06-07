@@ -10,10 +10,12 @@ public interface CarDetailContract {
         void setDataDetailCar(Cars car);
         boolean isCheckCarFavoriteDB(Cars car);
         void setDistributors(Distributors distributors);
+        void notloggedIn(String mess);
     }
     interface IPresenter{
         void getDataDetailCar(Cars car);
         void updateDataFavorite(Cars car, ImageView img);
         void getDistributors(int id);
+        boolean isLogged();
     }
 }

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/header_draw"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:orientation="horizontal"
+            android:paddingStart="10dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView2"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:cardCornerRadius="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/header_toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:padding="2dp"
+                    android:src="@drawable/back" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/b_n_ang_t_m"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:paddingLeft="10dp"
+                android:text="Quản lý cho thuê"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/cardView2"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/img_logo"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:layout_marginRight="20dp"
+                android:src="@drawable/em_quynh"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_properties"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center">
+
+
+            <Button
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:background="@drawable/background_properties"
+                android:gravity="center"
+                android:lineHeight="25dp"
+                android:padding="10dp"
+                android:text="Quản lý đơn đăng ký cho thuê xe"
+                android:textColor="@color/white"
+                app:backgroundTint="@color/blue"
+                android:textSize="16sp" />
+
+
+            <Button
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:background="@drawable/background_properties"
+                android:gravity="center"
+                android:padding="10dp"
+                android:layout_marginLeft="20dp"
+                android:text="Quản lý đơn đặt thuê xe "
+                android:textColor="@color/white"
+                android:lineHeight="25dp"
+                app:backgroundTint="#A608DF"
+                android:textSize="16sp" />
+
+
+            <Button
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:background="@drawable/background_properties"
+                android:padding="10dp"
+                android:text="Thống kê danh thu"
+                android:gravity="center"
+                android:layout_marginLeft="20dp"
+                android:lineHeight="25dp"
+                android:textColor="@color/white"
+                app:backgroundTint="#009688"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>
