@@ -1,4 +1,4 @@
-package com.greenhuecity.view.childnavfragment;
+package com.greenhuecity.view.fragment.child;
 
 
 import android.os.Bundle;
@@ -25,8 +25,6 @@ import java.util.List;
 public class CarFragment extends Fragment implements CarContract.IView {
     RecyclerView rvCar;
     CarPresenter brandPresenter;
-
-
     CarRecyclerViewAdapter mAdapter;
     List<Cars> carList;
     String brands;

@@ -1,4 +1,4 @@
-package com.greenhuecity.view;
+package com.greenhuecity.view.activity;
 
 import android.os.Bundle;
 

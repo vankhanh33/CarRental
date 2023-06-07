@@ -5,9 +5,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.greenhuecity.view.fragmentlogin.ForgotPasswordFragment;
-import com.greenhuecity.view.fragmentlogin.LoginFragment;
-import com.greenhuecity.view.fragmentlogin.RegisterFragment;
+import com.greenhuecity.view.fragment.login.ForgotPasswordFragment;
+import com.greenhuecity.view.fragment.login.LoginFragment;
+import com.greenhuecity.view.fragment.login.RegisterFragment;
 
 public class ViewPagerLoginAdapter extends FragmentStateAdapter {
     public ViewPagerLoginAdapter(@NonNull FragmentActivity fragmentActivity) {

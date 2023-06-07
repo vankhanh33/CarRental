@@ -3,7 +3,9 @@ package com.greenhuecity.data.remote;
 import com.greenhuecity.data.model.Cars;
 import com.greenhuecity.data.model.Distributors;
 import com.greenhuecity.data.model.OrderItems;
+import com.greenhuecity.data.model.OrderManagement;
 import com.greenhuecity.data.model.Orders;
+import com.greenhuecity.data.model.UpdateOrder;
 import com.greenhuecity.data.model.Users;
 
 import java.util.List;
@@ -33,25 +35,44 @@ public interface ApiService {
                               @Field("password") String password,
                               @Field("fullname") String fullName,
                               @Field("phone") String phone);
+
     //Lấy danh sách distributors
+    @GET("arr-distributor.php")
+    Call<List<Distributors>> getDistributor();
+
     @POST("distributors-id.php")
     @FormUrlEncoded
     Call<List<Distributors>> getDistributors(@Field("id") int id);
+
     //Xử lí đặt hàng
     @POST("up-orders.php")
     @FormUrlEncoded
     Call<Orders> upOrders(@Field("code") String code,
-                           @Field("from_time") String from_time,
-                           @Field("end_time") String end_time,
-                           @Field("users_id") int users_id);
+                          @Field("from_time") String from_time,
+                          @Field("end_time") String end_time,
+                          @Field("users_id") int users_id);
+
     @POST("orders-code.php")
     @FormUrlEncoded
     Call<List<Orders>> getOrders(@Field("cod") String cod);
+
     @POST("up-order-items.php")
     @FormUrlEncoded
     Call<OrderItems> upOrderItems(@Field("car_id") int car_id,
                                   @Field("order_id") int order_id,
                                   @Field("price") double price);
 
+    //Xử lí đơn đặt hàng
+    @POST("order-management.php")
+    @FormUrlEncoded
+    Call<List<OrderManagement>> getOrderManagement(@Field("id") int id);
+
+    //update order
+    @POST("update-order.php")
+    @FormUrlEncoded
+    Call<UpdateOrder> updateOrders(@Field("order_id") int order_id,
+                                   @Field("order_status") String order_status,
+                                   @Field("car_id") int car_id,
+                                   @Field("car_status") String car_status);
 
 }

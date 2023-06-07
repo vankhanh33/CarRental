@@ -1,4 +1,4 @@
-package com.greenhuecity.view.navfragment;
+package com.greenhuecity.view.fragment.navigation;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,11 +23,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.textfield.TextInputLayout;
 import com.greenhuecity.R;
-import com.greenhuecity.SearchActivity;
+import com.greenhuecity.view.activity.SearchActivity;
 import com.greenhuecity.data.contract.FavoriteContract;
 import com.greenhuecity.data.model.Cars;
 import com.greenhuecity.data.presenter.FavoritePresenter;
-import com.greenhuecity.data.presenter.HomePresenter;
 import com.greenhuecity.view.adapter.CarRecyclerViewAdapter;
 
 import java.io.Serializable;
@@ -58,7 +57,7 @@ public class FavoriteFragment extends Fragment implements FavoriteContract.IView
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                if (carsList != null) changeTextSearch();
+                if (carsList != null ) changeTextSearch();
             }
         }, 2000);
         return view;
@@ -99,29 +98,36 @@ public class FavoriteFragment extends Fragment implements FavoriteContract.IView
 
 
     private void changeTextSearch() {
-        List<String> suggestSearchResults = new ArrayList<>();
-        for (Cars cars : carsList) {
-            suggestSearchResults.add(cars.getCar_name());
+        try {
+            List<String> suggestSearchResults = new ArrayList<>();
+            for (Cars cars : carsList) {
+                suggestSearchResults.add(cars.getCar_name());
+            }
+            if(suggestSearchResults == null || suggestSearchResults.isEmpty()) return;
+
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, suggestSearchResults);
+            completeTextView.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    inputLayout.setHintEnabled(false);
+                    if (adapter != null) completeTextView.setAdapter(adapter);
+                    textSearch = s.toString().toLowerCase();
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+
+                }
+            });
+        } catch (Exception e) {
+            // Xử lý ngoại lệ ở đây.
         }
-        ArrayAdapter adapter = new ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, suggestSearchResults);
-        completeTextView.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                inputLayout.setHintEnabled(false);
-                completeTextView.setAdapter(adapter);
-                textSearch = s.toString().toLowerCase();
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
     }
 
 

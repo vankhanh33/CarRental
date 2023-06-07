@@ -14,22 +14,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.greenhuecity.R;
 import com.greenhuecity.data.model.Cars;
-import com.greenhuecity.view.CarDetailActivity;
+import com.greenhuecity.view.activity.CarDetailActivity;
 
 import java.text.NumberFormat;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
 public class CarRecyclerViewAdapter extends RecyclerView.Adapter<CarRecyclerViewAdapter.ViewHolder> {
     private List<Cars> mList;
     private Context mContext;
-    List<Cars> favoriteCarList;
 
     public CarRecyclerViewAdapter(List<Cars> list, Context context) {
         mList = list;
         mContext = context;
-        favoriteCarList = new ArrayList<>();
     }
 
     @NonNull

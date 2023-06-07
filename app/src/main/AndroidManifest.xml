@@ -24,7 +24,7 @@
             android:value="AIzaSyDKhV86CCjNXNLM83nU_BlsGJTq3PsSdVk" />
 
         <activity
-            android:name=".MainActivity"
+            android:name=".view.activity.MainActivity"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -34,19 +34,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.CarDetailActivity"
+            android:name=".view.activity.CarDetailActivity"
             android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".view.RentCarActivity"
+            android:name=".view.activity.RentCarActivity"
             android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".SearchActivity"
-            android:exported="true"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".DateTime"
+            android:name=".view.activity.SearchActivity"
             android:exported="true"
             android:screenOrientation="portrait" />
         <activity
@@ -54,7 +50,11 @@
             android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".view.LoginActivity"
+            android:name=".view.activity.LoginActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.activity.OrderManagementActivity"
             android:exported="true"
             android:screenOrientation="portrait" />
     </application>

@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.greenhuecity.view.childnavfragment.CarFragment;
+import com.greenhuecity.view.fragment.child.CarFragment;
 
 public class ViewPagerHomeAdapter extends FragmentStateAdapter {
     public ViewPagerHomeAdapter(@NonNull FragmentActivity fragmentActivity) {

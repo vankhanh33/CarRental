@@ -1,5 +1,7 @@
 package com.greenhuecity.data.presenter;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -11,9 +13,8 @@ import com.greenhuecity.data.model.Cars;
 import com.greenhuecity.data.model.Distributors;
 import com.greenhuecity.data.remote.ApiService;
 import com.greenhuecity.data.remote.RetrofitClient;
-import com.greenhuecity.view.CarDetailActivity;
+import com.greenhuecity.view.activity.CarDetailActivity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -72,5 +73,16 @@ public class CarDetailPresenter implements CarDetailContract.IPresenter {
 
             }
         });
+    }
+
+    @Override
+    public boolean isLogged() {
+        SharedPreferences preferences = activity.getSharedPreferences("Success", Context.MODE_PRIVATE);
+        String key = preferences.getString("users", "");
+        if (!key.isEmpty()) {
+           return  true;
+        }
+        mView.notloggedIn("Bạn cần đăng nhập trước khi thuê xe.");
+        return false;
     }
 }

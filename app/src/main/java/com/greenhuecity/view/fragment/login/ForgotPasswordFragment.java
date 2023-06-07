@@ -1,4 +1,4 @@
-package com.greenhuecity.view.fragmentlogin;
+package com.greenhuecity.view.fragment.login;
 
 import androidx.fragment.app.Fragment;
 

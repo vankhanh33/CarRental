@@ -7,7 +7,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Handler;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.greenhuecity.data.contract.LoginContract;
@@ -15,7 +14,7 @@ import com.greenhuecity.data.model.Users;
 import com.greenhuecity.data.remote.ApiService;
 import com.greenhuecity.data.remote.RetrofitClient;
 import com.greenhuecity.util.Utils;
-import com.greenhuecity.view.LoginActivity;
+import com.greenhuecity.view.activity.LoginActivity;
 
 import java.util.List;
 
@@ -52,7 +51,8 @@ public class LoginPresenter implements LoginContract.IPresenter {
                                 Gson gson = new Gson();
                                 String user = gson.toJson(mList.get(i));
                                 SharedPreferences.Editor editor = context.getSharedPreferences("Success", MODE_PRIVATE).edit();
-                                    editor.putString("users", user);
+                                editor.remove("users");
+                                editor.putString("users", user);
                                 editor.apply();
                                 //dialog success and intent MainActivity
                                 mView.showSuccessMessage("Chào mừng đến với ứng dụng của chúng tôi!");
@@ -71,7 +71,7 @@ public class LoginPresenter implements LoginContract.IPresenter {
     }
 
     @Override
-    public void loadingLogin(String user,String password, Context context) {
+    public void loadingLogin(String user, String password, Context context) {
         ProgressDialog progressDialog = new ProgressDialog(loginActivity);
         progressDialog.setMessage("Loading..."); // Thiết lập thông điệp
         progressDialog.setCancelable(false); // Không cho phép hủy
@@ -90,7 +90,7 @@ public class LoginPresenter implements LoginContract.IPresenter {
             @Override
             public void run() {
                 progressDialog.dismiss();
-                if(!isCancelled){
+                if (!isCancelled) {
                     login(user, password, context);
                 }
                 isCancelled = false;

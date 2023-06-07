@@ -5,10 +5,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.greenhuecity.view.navfragment.FavoriteFragment;
-import com.greenhuecity.view.navfragment.HomeFragment;
-import com.greenhuecity.view.navfragment.SettingFragment;
-import com.greenhuecity.view.navfragment.NotifyFragment;
+import com.greenhuecity.view.fragment.navigation.FavoriteFragment;
+import com.greenhuecity.view.fragment.navigation.HomeFragment;
+import com.greenhuecity.view.fragment.navigation.SettingFragment;
+import com.greenhuecity.view.fragment.navigation.NotifyFragment;
 
 public class ViewPagerAdapter extends FragmentStateAdapter {
     public ViewPagerAdapter(@NonNull FragmentActivity fragmentActivity) {

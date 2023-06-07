@@ -8,17 +8,14 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Handler;
-import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.TimePicker;
-import android.widget.Toast;
 
 import androidx.core.app.ActivityCompat;
 
@@ -30,20 +27,17 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import com.google.gson.Gson;
 
-import com.google.gson.reflect.TypeToken;
 import com.greenhuecity.data.contract.RentCarConstract;
 import com.greenhuecity.data.model.CarDistributor;
-import com.greenhuecity.data.model.Cars;
 import com.greenhuecity.data.model.OrderItems;
 import com.greenhuecity.data.model.Orders;
 import com.greenhuecity.data.model.Users;
 import com.greenhuecity.data.remote.ApiService;
 import com.greenhuecity.data.remote.RetrofitClient;
-import com.greenhuecity.view.RentCarActivity;
+import com.greenhuecity.view.activity.RentCarActivity;
 
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 

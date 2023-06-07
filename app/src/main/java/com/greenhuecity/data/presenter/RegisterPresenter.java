@@ -7,12 +7,11 @@ import android.util.Patterns;
 import android.widget.Toast;
 
 import com.greenhuecity.data.contract.RegisterContract;
-import com.greenhuecity.data.model.Cars;
 import com.greenhuecity.data.model.Users;
 import com.greenhuecity.data.remote.ApiService;
 import com.greenhuecity.data.remote.RetrofitClient;
 import com.greenhuecity.util.Utils;
-import com.greenhuecity.view.LoginActivity;
+import com.greenhuecity.view.activity.LoginActivity;
 
 import java.util.ArrayList;
 import java.util.List;

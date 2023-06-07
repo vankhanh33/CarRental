@@ -1,10 +1,8 @@
-package com.greenhuecity.view;
+package com.greenhuecity.view.activity;
 
 import android.app.AlertDialog;
-import android.app.ProgressDialog;
 import android.content.Context;
 
-import android.content.DialogInterface;
 import android.location.LocationManager;
 import android.os.Bundle;
 
@@ -13,7 +11,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -25,7 +22,6 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.greenhuecity.R;
 import com.greenhuecity.data.contract.RentCarConstract;
 import com.greenhuecity.data.model.CarDistributor;
-import com.greenhuecity.data.model.Orders;
 import com.greenhuecity.data.presenter.RentCarPresenter;
 
 

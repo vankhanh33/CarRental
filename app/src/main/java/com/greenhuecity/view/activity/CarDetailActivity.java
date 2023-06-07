@@ -1,12 +1,13 @@
-package com.greenhuecity.view;
+package com.greenhuecity.view.activity;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -57,12 +58,14 @@ public class CarDetailActivity extends AppCompatActivity implements CarDetailCon
         btnBooking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(CarDetailActivity.this, RentCarActivity.class);
-                CarDistributor carDistributor = new CarDistributor(car, dist);
-                if (car != null && dist != null) {
-                    intent.putExtra("cars-distributors", carDistributor);
-                    startActivity(intent);
-                }
+               if(  mPresenter.isLogged()){
+                   Intent intent = new Intent(CarDetailActivity.this, RentCarActivity.class);
+                   CarDistributor carDistributor = new CarDistributor(car, dist);
+                   if (car != null && dist != null) {
+                       intent.putExtra("cars-distributors", carDistributor);
+                       startActivity(intent);
+                   }
+               }
             }
         });
     }
@@ -117,5 +120,20 @@ public class CarDetailActivity extends AppCompatActivity implements CarDetailCon
         dist = distributors;
         tvDistributors.setText(dist.getName());
         Glide.with(this).load(dist.getPhoto()).into(imgDistributors);
+    }
+
+    @Override
+    public void notloggedIn(String mess) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Chưa đăng nhập");
+        builder.setMessage(mess);
+        AlertDialog dialog = builder.create();
+        dialog.show();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                dialog.dismiss();
+            }
+        }, 2000);
     }
 }

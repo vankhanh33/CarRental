@@ -4,10 +4,11 @@ import java.io.Serializable;
 
 public class Distributors implements Serializable {
     int id;
-    String code, name,photo,address,description;
-    double latitude,longitude;
+    String code, name, photo, address, description;
+    double latitude, longitude;
+    int user_id;
 
-    public Distributors(int id, String code, String name, String photo, String address, String description, double latitude, double longitude) {
+    public Distributors(int id, String code, String name, String photo, String address, String description, double latitude, double longitude, int user_id) {
         this.id = id;
         this.code = code;
         this.name = name;
@@ -16,6 +17,7 @@ public class Distributors implements Serializable {
         this.description = description;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.user_id = user_id;
     }
 
     public int getId() {
@@ -48,5 +50,9 @@ public class Distributors implements Serializable {
 
     public double getLongitude() {
         return longitude;
+    }
+
+    public int getUser_id() {
+        return user_id;
     }
 }

@@ -1,4 +1,4 @@
-package com.greenhuecity;
+package com.greenhuecity.view.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +14,7 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.greenhuecity.R;
 import com.greenhuecity.view.adapter.ViewPagerAdapter;
 
 public class MainActivity extends AppCompatActivity {
