@@ -78,13 +78,14 @@
                         android:background="@drawable/ic_launcher_background" />
 
 
-                    <TextView
+                    <Button
                         android:id="@+id/btn_imgcar"
                         android:layout_width="100dp"
-                        android:layout_height="30dp"
+                        android:layout_height="35dp"
                         android:layout_gravity="center"
                         android:background="#B7C1C1C1"
                         android:gravity="center"
+                        android:padding="0dp"
                         android:text="Chọn ảnh"
                         android:textColor="#ffffff"
                         android:textSize="16dp" />
@@ -142,11 +143,12 @@
                         android:layout_height="40dp"
                         android:background="@drawable/background_properties"
                         android:gravity="center"
-                        android:hint="Trạng thái cho thuê..."
+                        android:hint="Chọn trạng thái"
+                        android:drawableRight="@drawable/ic_more"
                         android:textSize="15dp" />
 
                     <TextView
-                        android:id="@+id/edit_"
+                        android:id="@+id/edit_power"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:layout_marginLeft="5dp"
@@ -193,7 +195,7 @@
                     android:gravity="center">
 
                     <EditText
-                        android:id="@+id/edit_maxSpeed"
+                        android:id="@+id/edit_topSpeed"
                         android:layout_width="125dp"
                         android:layout_height="40dp"
                         android:background="@drawable/background_properties"
