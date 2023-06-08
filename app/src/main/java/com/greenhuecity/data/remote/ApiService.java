@@ -75,4 +75,24 @@ public interface ApiService {
                                    @Field("car_id") int car_id,
                                    @Field("car_status") String car_status);
 
+    //add cars
+    @POST("upload-cars.php")
+    @FormUrlEncoded
+    Call<Cars> uploadCars(@Field("car_name") String car_name,
+                          @Field("price") double price,
+                          @Field("description") String description,
+                          @Field("license_plates") String license_plates,
+                          @Field("status") String status,
+                          @Field("from_time") String from_time,
+                          @Field("end_time") String end_time,
+                          @Field("approve") String approve,
+                          @Field("power_id") int power_id,
+                          @Field("brand_id") int brand_id,
+                          @Field("user_id") int user_id,
+                          @Field("distributor_id") int distributor_id,
+                          @Field("top_speed") double top_speed,
+                          @Field("horse_power") double horse_power,
+                          @Field("mileage") double mileage,
+                          @Field("image_data") String image_data,
+                          @Field("random_photo") String random_photo);
 }
