@@ -8,12 +8,11 @@ Với một giao diện thân thiện và dễ sử dụng, Car Rental là ứng
 
 ## Application Development Member List:
 
-- [@Huỳnh Tấn Thạch](https://www.github.com/octokatherine)(Social Media Marketing)
-- [@Trương Văn Khánh](https://www.github.com/octokatherine)(DataEnginer)
-- [@Nguyễn Phúc Lâm](https://www.github.com/octokatherine)(Leader)
-- [@Lê Văn Quốc Đạt](https://www.github.com/octokatherine)(Design)
-- [@Trần Nhật Hiệp](https://www.github.com/octokatherine)(cheers)
-- [@Phùng Hữu Long](https://www.github.com/octokatherine)(cheers)
+- [@Huỳnh Tấn Thạch](https://www.github.com/#)(Social Media Marketing)
+- [@Trương Văn Khánh](https://www.github.com/#)(DataEnginer)
+- [@Nguyễn Phúc Lâm](https://www.github.com/#)(Leader)
+- [@Lê Văn Quốc Đạt](https://www.github.com/#)(Design)
+- [@Trần Nhật Hiệp](https://www.github.com/#)(cheers)
+- [@Phùng Hữu Long](https://www.github.com/#)(cheers)
 
-
-# CarRental
+![Logo](https://i.ibb.co/TMf4h1J/Logo-removebg-preview.png)
