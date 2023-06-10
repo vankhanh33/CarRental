@@ -20,11 +20,11 @@ import java.text.NumberFormat;
 import java.util.List;
 import java.util.Locale;
 
-public class CarRecyclerViewAdapter extends RecyclerView.Adapter<CarRecyclerViewAdapter.ViewHolder> {
+public class CarAdapter extends RecyclerView.Adapter<CarAdapter.ViewHolder> {
     private List<Cars> mList;
     private Context mContext;
 
-    public CarRecyclerViewAdapter(List<Cars> list, Context context) {
+    public CarAdapter(List<Cars> list, Context context) {
         mList = list;
         mContext = context;
     }

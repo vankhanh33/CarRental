@@ -1,11 +1,7 @@
 package com.greenhuecity.view.activity;
 
-import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
-import android.os.Handler;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -14,9 +10,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.greenhuecity.R;
 import com.greenhuecity.data.contract.OrderManagementContract;
 import com.greenhuecity.data.model.OrderManagement;
-import com.greenhuecity.data.model.Users;
 import com.greenhuecity.data.presenter.OrderManagementPresenter;
-import com.greenhuecity.view.adapter.ManagerCarRvAdapter;
+import com.greenhuecity.view.adapter.ManagementCarAdapter;
 
 import java.util.List;
 
@@ -25,7 +20,7 @@ public class OrderManagementActivity extends AppCompatActivity implements OrderM
     RecyclerView rvOrder;
     TextView tvNumberOfOrders;
     OrderManagementPresenter mPresenter;
-    ManagerCarRvAdapter managerCarRvAdapter;
+    ManagementCarAdapter managerCarRvAdapter;
 
 
     @Override
@@ -43,20 +38,20 @@ public class OrderManagementActivity extends AppCompatActivity implements OrderM
 
     @Override
     public void setDataRecyclerViewOrderManagement(List<OrderManagement> mList) {
-        managerCarRvAdapter = new ManagerCarRvAdapter(mList, this);
+        managerCarRvAdapter = new ManagementCarAdapter(mList, this);
         rvOrder.setAdapter(managerCarRvAdapter);
         if (mList != null) tvNumberOfOrders.setText(String.valueOf(mList.size()));
         else tvNumberOfOrders.setText(String.valueOf(0));
         if (managerCarRvAdapter != null) {
-            managerCarRvAdapter.setUpdateOrderIF(new ManagerCarRvAdapter.UpdateOrderIF() {
+            managerCarRvAdapter.setUpdateOrderIF(new ManagementCarAdapter.UpdateOrderIF() {
                 @Override
                 public void updateCofirm(int car_id, int order_id) {
-                    mPresenter.updateStatusOrder(order_id, "Confirmed", car_id, "Has been hired");
+                    mPresenter.updateStatusOrder(order_id, "Đã xác nhận", car_id, "Xe đang được thuê");
                 }
 
                 @Override
                 public void updateRefuse(int car_id, int order_id) {
-                    mPresenter.updateStatusOrder(order_id, "Canceled", car_id, "Free time");
+                    mPresenter.updateStatusOrder(order_id, "Bị hủy từ nhà phân phối", car_id, "Đang rảnh");
                 }
             });
         }

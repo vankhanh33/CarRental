@@ -22,7 +22,7 @@ import java.util.Locale;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class ManagerCarRvAdapter extends RecyclerView.Adapter<ManagerCarRvAdapter.ViewHolder> {
+public class ManagementCarAdapter extends RecyclerView.Adapter<ManagementCarAdapter.ViewHolder> {
     private List<OrderManagement> mList;
     private Context mContext;
 
@@ -39,7 +39,7 @@ public class ManagerCarRvAdapter extends RecyclerView.Adapter<ManagerCarRvAdapte
     }
 
 
-    public ManagerCarRvAdapter(List<OrderManagement> list, Context context) {
+    public ManagementCarAdapter(List<OrderManagement> list, Context context) {
         mList = list;
         mContext = context;
 

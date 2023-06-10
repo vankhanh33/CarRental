@@ -74,7 +74,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:paddingLeft="20dp"
-            android:text="Số lượng đơn đặt xe: "
+            android:text="Xe đăng ký cho thuê: "
             android:textColor="#000000"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -94,7 +94,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text=" đơn"
+            android:text=" xe"
             android:textColor="#000000"
             android:textSize="20sp"
             android:textStyle="bold" />

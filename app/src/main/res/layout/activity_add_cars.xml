@@ -75,15 +75,16 @@
                         android:layout_width="280dp"
                         android:layout_height="180dp"
                         android:layout_gravity="center"
-                        android:background="@drawable/ic_launcher_background" />
+                        android:background="@drawable/background_properties" />
 
 
                     <Button
                         android:id="@+id/btn_imgcar"
                         android:layout_width="100dp"
-                        android:layout_height="35dp"
+                        android:layout_height="40dp"
                         android:layout_gravity="center"
-                        android:background="#B7C1C1C1"
+                        app:cornerRadius="0dp"
+                        app:backgroundTint="@color/gray"
                         android:gravity="center"
                         android:padding="0dp"
                         android:text="Chọn ảnh"
@@ -95,7 +96,7 @@
                 <EditText
                     android:id="@+id/edit_namecar"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="50dp"
                     android:layout_below="@+id/cardView"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/background_properties"
@@ -105,7 +106,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/edit_brandcar"
+
                     android:layout_marginTop="10dp"
                     android:gravity="center">
 
@@ -116,48 +117,21 @@
                         android:background="@drawable/background_properties"
                         android:gravity="center"
                         android:hint="Giá cho thuê..."
-                        android:textSize="15dp" />
+                        android:textSize="14dp" />
 
                     <EditText
                         android:id="@+id/edit_plates"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
-                        android:layout_below="@+id/edit_brandcar"
                         android:layout_marginLeft="5dp"
                         android:layout_toRightOf="@+id/edit_price"
                         android:background="@drawable/background_properties"
                         android:gravity="center"
                         android:hint="Biển số xe...."
-                        android:textSize="15dp" />
+                        android:textSize="14dp" />
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:gravity="center">
 
-                    <TextView
-                        android:id="@+id/edit_status"
-                        android:layout_width="180dp"
-                        android:layout_height="40dp"
-                        android:background="@drawable/background_properties"
-                        android:gravity="center"
-                        android:hint="Chọn trạng thái"
-                        android:drawableRight="@drawable/ic_more"
-                        android:textSize="15dp" />
-
-                    <TextView
-                        android:id="@+id/edit_power"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_marginLeft="5dp"
-                        android:background="@drawable/background_properties"
-                        android:gravity="center"
-                        android:hint="Phân khối xe ..."
-                        android:textSize="15dp" />
-
-                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -173,7 +147,11 @@
                         android:background="@drawable/background_properties"
                         android:gravity="center"
                         android:hint="Hãng xe..."
-                        android:textSize="15dp" />
+                        android:drawableRight="@drawable/down"
+                        android:paddingLeft="5dp"
+                        android:paddingEnd="5dp"
+                        android:drawableTint="@color/gray"
+                        android:textSize="14dp" />
 
                     <TextView
                         android:id="@+id/edit_Distributor"
@@ -185,7 +163,11 @@
                         android:background="@drawable/background_properties"
                         android:gravity="center"
                         android:hint="Nhà phân phối...."
-                        android:textSize="15dp" />
+                        android:drawableRight="@drawable/down"
+                        android:paddingLeft="5dp"
+                        android:paddingEnd="5dp"
+                        android:drawableTint="@color/gray"
+                        android:textSize="14dp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -201,7 +183,7 @@
                         android:background="@drawable/background_properties"
                         android:hint="Tốc độ tối đa...."
                         android:textAlignment="center"
-                        android:textSize="15dp" />
+                        android:textSize="14dp" />
 
                     <EditText
                         android:id="@+id/edit_horse"
@@ -211,7 +193,7 @@
                         android:background="@drawable/background_properties"
                         android:hint="Mã lực...."
                         android:textAlignment="center"
-                        android:textSize="15dp" />
+                        android:textSize="14dp" />
 
                     <EditText
                         android:id="@+id/edit_mileage"
@@ -221,9 +203,42 @@
                         android:background="@drawable/background_properties"
                         android:hint="Tiêu thụ km/l.."
                         android:textAlignment="center"
-                        android:textSize="15dp" />
+                        android:textSize="14dp" />
                 </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center">
 
+                    <TextView
+                        android:id="@+id/edit_status"
+                        android:layout_width="180dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/background_properties"
+                        android:gravity="center"
+                        android:hint="Trạng thái thuê..."
+                        android:drawableRight="@drawable/down"
+                        android:paddingLeft="5dp"
+                        android:paddingEnd="5dp"
+                        android:drawableTint="@color/gray"
+                        android:textSize="14dp" />
+
+                    <TextView
+                        android:id="@+id/edit_power"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="5dp"
+                        android:background="@drawable/background_properties"
+                        android:gravity="center"
+                        android:hint="Phân khối xe ..."
+                        android:drawableRight="@drawable/down"
+                        android:paddingLeft="5dp"
+                        android:paddingEnd="5dp"
+                        android:drawableTint="@color/gray"
+                        android:textSize="14dp" />
+
+                </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -232,34 +247,42 @@
 
                     <TextView
                         android:id="@+id/edit_fromTime"
-                        android:layout_width="180dp"
+                        android:layout_width="190dp"
                         android:layout_height="40dp"
                         android:background="@drawable/background_properties"
                         android:gravity="center"
-                        android:hint="Thời gian bắt đầu ..."
-                        android:textSize="15dp" />
+                        android:hint="Thời gian cho thuê ..."
+                        android:drawableRight="@drawable/calendar"
+                        android:drawableTint="@color/gray"
+                        android:paddingLeft="5dp"
+                        android:paddingEnd="5dp"
+                        android:textSize="14dp" />
 
                     <TextView
                         android:id="@+id/edit_endTime"
-                        android:layout_width="match_parent"
+                        android:layout_width="190dp"
                         android:layout_height="40dp"
                         android:layout_marginLeft="5dp"
                         android:background="@drawable/background_properties"
                         android:gravity="center"
-                        android:hint="Thời gian kết thúc ..."
-                        android:textSize="15dp" />
+                        android:hint="Thời gian kết thúc..."
+                        android:drawableRight="@drawable/calendar"
+                        android:paddingLeft="5dp"
+                        android:paddingEnd="5dp"
+                        android:drawableTint="@color/gray"
+                        android:textSize="14dp" />
                 </LinearLayout>
 
                 <EditText
                     android:id="@+id/edit_discription"
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
+                    android:layout_height="110dp"
                     android:layout_marginTop="10dp"
                     android:padding="10dp"
                     android:background="@drawable/background_properties"
                     android:hint="Mô tả..."
                     android:textAlignment="center"
-                    android:textSize="15dp" />
+                    android:textSize="14dp" />
 
             </LinearLayout>
             <CheckBox
