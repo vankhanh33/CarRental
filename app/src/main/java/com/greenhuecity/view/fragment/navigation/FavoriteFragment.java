@@ -27,7 +27,7 @@ import com.greenhuecity.view.activity.SearchActivity;
 import com.greenhuecity.data.contract.FavoriteContract;
 import com.greenhuecity.data.model.Cars;
 import com.greenhuecity.data.presenter.FavoritePresenter;
-import com.greenhuecity.view.adapter.CarRecyclerViewAdapter;
+import com.greenhuecity.view.adapter.CarAdapter;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -73,7 +73,7 @@ public class FavoriteFragment extends Fragment implements FavoriteContract.IView
 
     @Override
     public void setDataRecyclerViewCar(List<Cars> mList) {
-        CarRecyclerViewAdapter adapter = new CarRecyclerViewAdapter(mList, requireContext());
+        CarAdapter adapter = new CarAdapter(mList, requireContext());
         rvCar.setAdapter(adapter);
         adapter.notifyDataSetChanged();
 

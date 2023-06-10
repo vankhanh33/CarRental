@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.greenhuecity.R;
 import com.greenhuecity.data.model.Cars;
-import com.greenhuecity.view.adapter.CarRecyclerViewAdapter;
+import com.greenhuecity.view.adapter.CarAdapter;
 
 import java.util.List;
 
@@ -27,7 +27,7 @@ public class SearchActivity extends AppCompatActivity {
         rvSearch.setLayoutManager(new GridLayoutManager(this,3));
         List<Cars> carsList = (List<Cars>)getIntent().getSerializableExtra("list");
         if(carsList != null){
-            CarRecyclerViewAdapter carRecyclerViewAdapter = new CarRecyclerViewAdapter(carsList,this);
+            CarAdapter carRecyclerViewAdapter = new CarAdapter(carsList,this);
             rvSearch.setAdapter(carRecyclerViewAdapter);
         }
         tvResult.setText(String.valueOf(carsList.size()));

@@ -18,10 +18,13 @@
         android:theme="@style/Theme.CarRental"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity
+            android:name=".view.activity.UserOrderActivity"
+            android:exported="true" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDKhV86CCjNXNLM83nU_BlsGJTq3PsSdVk" />
+            android:value="AIzaSyBGG0rldiCyzp45Pu_XBEHExPrpWfpBUQ0" />
 
         <activity
             android:name=".view.activity.MainActivity"
@@ -55,6 +58,18 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".view.activity.OrderManagementActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.activity.RentalManagementActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.activity.RentMnDetailActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.activity.ManagerActivity"
             android:exported="true"
             android:screenOrientation="portrait" />
     </application>

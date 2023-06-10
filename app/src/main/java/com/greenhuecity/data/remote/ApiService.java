@@ -1,11 +1,15 @@
 package com.greenhuecity.data.remote;
 
+import com.greenhuecity.data.model.Brands;
 import com.greenhuecity.data.model.Cars;
 import com.greenhuecity.data.model.Distributors;
 import com.greenhuecity.data.model.OrderItems;
 import com.greenhuecity.data.model.OrderManagement;
 import com.greenhuecity.data.model.Orders;
+import com.greenhuecity.data.model.Powers;
+import com.greenhuecity.data.model.RentManagement;
 import com.greenhuecity.data.model.UpdateOrder;
+import com.greenhuecity.data.model.UserOrder;
 import com.greenhuecity.data.model.Users;
 
 import java.util.List;
@@ -25,7 +29,7 @@ public interface ApiService {
     Call<List<Cars>> getCarByBrand(@Field("brands") String brands);
 
     //Lấy danh sách user
-    @GET("arr-users.php")
+    @GET("arr-user.php")
     Call<List<Users>> getUsers();
 
     //register
@@ -95,4 +99,26 @@ public interface ApiService {
                           @Field("mileage") double mileage,
                           @Field("image_data") String image_data,
                           @Field("random_photo") String random_photo);
+
+    @GET("arr-brand.php")
+    Call<List<Brands>> getBrand();
+
+    @GET("arr-power.php")
+    Call<List<Powers>> getPower();
+
+    //xác minh đăng kí cho thuê
+    @POST("arr-rental-management.php")
+    @FormUrlEncoded
+    Call<List<RentManagement>> getRentCars(@Field("id") int id);
+
+    @POST("update-censored.php")
+    @FormUrlEncoded
+    Call<String> updateCensored(@Field("car_id") String car_id,
+                                @Field("approve") String approve);
+
+    //order of user
+    @POST("arr-orderby-user-id.php")
+    @FormUrlEncoded
+    Call<List<UserOrder>> getOrderByUserId(@Field("id") int id);
+
 }

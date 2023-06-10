@@ -54,68 +54,80 @@
                 app:layout_constraintStart_toEndOf="@+id/cardView2"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/img_logo"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:layout_gravity="center"
-                android:layout_marginRight="20dp"
-                android:src="@drawable/em_quynh"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <LinearLayout
-            android:id="@+id/layout_properties"
+        <HorizontalScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:gravity="center">
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/layout_properties"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center">
 
 
-            <Button
-                android:layout_width="110dp"
-                android:layout_height="110dp"
-                android:background="@drawable/background_properties"
-                android:gravity="center"
-                android:lineHeight="25dp"
-                android:padding="10dp"
-                android:text="Quản lý đơn đăng ký cho thuê xe"
-                android:textColor="@color/white"
-                app:backgroundTint="@color/blue"
-                android:textSize="16sp" />
+                <Button
+                    android:id="@+id/btn_regis.rental"
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
+                    android:background="@drawable/background_properties"
+                    android:gravity="center"
+                    android:lineHeight="25dp"
+                    android:padding="10dp"
+                    android:text="Quản lý đăng ký cho thuê xe"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:backgroundTint="@color/blue" />
 
 
-            <Button
-                android:layout_width="110dp"
-                android:layout_height="110dp"
-                android:background="@drawable/background_properties"
-                android:gravity="center"
-                android:padding="10dp"
-                android:layout_marginLeft="20dp"
-                android:text="Quản lý đơn đặt thuê xe "
-                android:textColor="@color/white"
-                android:lineHeight="25dp"
-                app:backgroundTint="#A608DF"
-                android:textSize="16sp" />
+                <Button
+                    android:id="@+id/btn_order.rental"
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/background_properties"
+                    android:gravity="center"
+                    android:lineHeight="25dp"
+                    android:padding="10dp"
+                    android:text="Quản lý đơn hàng đặt thuê xe "
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:backgroundTint="#F84B9D" />
+
+                <Button
+                    android:id="@+id/btn_order.areRenting"
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/background_properties"
+                    android:gravity="center"
+                    android:lineHeight="25dp"
+                    android:padding="10dp"
+                    android:text="Quản lý xe đang được thuê "
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:backgroundTint="#F84B9D" />
 
 
-            <Button
-                android:layout_width="110dp"
-                android:layout_height="110dp"
-                android:background="@drawable/background_properties"
-                android:padding="10dp"
-                android:text="Thống kê danh thu"
-                android:gravity="center"
-                android:layout_marginLeft="20dp"
-                android:lineHeight="25dp"
-                android:textColor="@color/white"
-                app:backgroundTint="#009688"
-                android:textSize="16sp" />
+                <Button
+                    android:id="@+id/btn_revenue.statistics"
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/background_properties"
+                    android:gravity="center"
+                    android:lineHeight="25dp"
+                    android:padding="10dp"
+                    android:text="Thống kê danh thu"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:backgroundTint="#009688" />
 
-        </LinearLayout>
+            </LinearLayout>
+        </HorizontalScrollView>
     </LinearLayout>
 
 </ScrollView>

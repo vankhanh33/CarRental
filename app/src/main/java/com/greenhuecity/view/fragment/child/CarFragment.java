@@ -18,14 +18,14 @@ import com.greenhuecity.R;
 import com.greenhuecity.data.contract.CarContract;
 import com.greenhuecity.data.model.Cars;
 import com.greenhuecity.data.presenter.CarPresenter;
-import com.greenhuecity.view.adapter.CarRecyclerViewAdapter;
+import com.greenhuecity.view.adapter.CarAdapter;
 
 import java.util.List;
 
 public class CarFragment extends Fragment implements CarContract.IView {
     RecyclerView rvCar;
     CarPresenter brandPresenter;
-    CarRecyclerViewAdapter mAdapter;
+    CarAdapter mAdapter;
     List<Cars> carList;
     String brands;
 
@@ -57,7 +57,7 @@ public class CarFragment extends Fragment implements CarContract.IView {
     @Override
     public void setDataRecyclerViewCar(List<Cars> mList) {
         carList = mList;
-        mAdapter = new CarRecyclerViewAdapter(carList, getContext());
+        mAdapter = new CarAdapter(carList, getContext());
         rvCar.setAdapter(mAdapter);
 
         rvCar.setOnTouchListener(new View.OnTouchListener() {

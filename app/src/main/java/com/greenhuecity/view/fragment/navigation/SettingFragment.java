@@ -17,6 +17,7 @@ import com.greenhuecity.data.contract.SettingContract;
 import com.greenhuecity.data.model.Distributors;
 import com.greenhuecity.data.presenter.SettingPresenter;
 import com.greenhuecity.view.activity.LoginActivity;
+import com.greenhuecity.view.activity.ManagerActivity;
 import com.greenhuecity.view.activity.OrderManagementActivity;
 
 import java.util.List;
@@ -44,7 +45,7 @@ public class SettingFragment extends Fragment implements SettingContract.IView {
                     startActivity(new Intent(getActivity(), LoginActivity.class));
             }
         });
-        tvManager.setOnClickListener(view -> startActivity(new Intent(getActivity(), OrderManagementActivity.class)));
+        tvManager.setOnClickListener(view -> startActivity(new Intent(getActivity(), ManagerActivity.class)));
         return view;
     }
 
